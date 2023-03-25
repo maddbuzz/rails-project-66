@@ -41,5 +41,4 @@
 
 /.vscode
 
-.env.example
 .env

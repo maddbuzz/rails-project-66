@@ -8,7 +8,7 @@ without-production:
 
 install-without-production: without-production install
 	gem install slim_lint
-	# cp -f .env.example .env || true
+	cp -n .env.example .env || true
 
 dev-start:
 	RAILS_ENV=development bin/rails assets:precompile

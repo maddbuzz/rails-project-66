@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
-  layout 'error'
+  layout 'centered'
 
   def index; end
 end

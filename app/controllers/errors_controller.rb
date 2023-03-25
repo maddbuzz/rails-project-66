@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ErrorsController < ApplicationController
-  layout 'error'
+  layout 'centered'
 
   def not_found
     render status: :not_found

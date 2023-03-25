@@ -4,12 +4,13 @@
 ## Github Quality project
 The Github Quality project is a service that helps you automatically monitor the quality of github repositories. It tracks changes and runs them through the built-in parsers. Then it generates reports and sends them to the user.
 
-<!-- (production deployed on [railway](https://maddbuzz-rails-bulletin-board.up.railway.app/)) -->
+(production deployed on [render](https://maddbuzz-rails-github-quality.onrender.com))
 
 ## Local installation
 ```
 make install-without-production
 ```
+(after that fill *.env* file with correct values)
 ## Start dev-server
 ```
 make dev-start
@@ -22,7 +23,7 @@ make lint
 ```
 make test
 ```
-## Start system tests (Firefox or Firefox headless)
+## Start system tests (with Firefox or Firefox headless)
 ```
 make test-system
 ```
