@@ -1,0 +1,11 @@
+.card.border-secondary.mb-3.text-warning.text-center
+  h5.card-header.text-bg-dark.text-warning
+    | Github Quality project
+  .card-body.text-bg-secondary
+    / h5.card-title
+      | Github Quality project
+    p.card-text
+      | The Github Quality project is a service that helps you automatically monitor the quality of github repositories.
+      br
+      | It tracks changes and runs them through the built-in parsers. Then it generates reports and sends them to the user.
+    = link_to t('.back_to_root'), root_path, class: 'btn btn-warning'
