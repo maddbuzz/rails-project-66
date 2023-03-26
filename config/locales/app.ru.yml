@@ -1,0 +1,28 @@
+ru:
+  user_not_authenticated: Вам необходимо войти в систему для выполнения этого действия
+  user_not_authorized: Вы не авторизованы для выполнения этого действия
+  user_not_admin: Вам необходимо быть администратором для выполнения этого действия
+
+  views:
+    pagination:
+      first: Первая
+      previous: Предыдущая
+      next: Следующая
+      last: Последняя
+
+  web:
+
+    auth:
+      callback:
+        already_signed_in: Вы уже вошли ранее
+        signed_in: Выполнен вход
+      logout:
+        signed_out: Выполнен выход
+
+    home:
+      index:
+        Hello from Hexlet!: Привет от Хекслета!
+        Practical programming courses: Практические курсы по программированию
+        Repository Quality Analyzer: Анализатор качества репозиториев
+        project_description: Проект, который помогает автоматически следить за качеством репозиториев на Github. Он отслеживает изменения и прогоняет их через встроенные анализаторы. Затем формирует отчеты и отправляет их пользователю.
+        To learn more: Узнать больше

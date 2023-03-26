@@ -3,5 +3,11 @@
 require 'test_helper'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
+  # (need to install Firefox first: sudo apt install firefox)
+  driven_by :selenium, using: :firefox
+
+  def sign_in(user, _options = {})
+    mock_omni_auth(user)
+    visit callback_auth_url('github')
+  end
 end

@@ -15,3 +15,44 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
   end
 end
+
+def t(*args, **kwargs)
+  I18n.t(*args, **kwargs)
+end
+
+def assert_flash(i18n_path, type = :notice)
+  assert_equal t(i18n_path), flash[type]
+end
+
+# Теперь OmniAuth в тестах не обращается к внешним источникам
+OmniAuth.config.test_mode = true
+
+def mock_omni_auth(user, provider = :github)
+  auth_hash = {
+    provider: provider.to_s,
+    uid: '12345',
+    info: {
+      email: user.email,
+      nickname: user.nickname,
+      token: user.token
+    }
+  }
+  OmniAuth.config.mock_auth[provider] = OmniAuth::AuthHash::InfoHash.new(auth_hash)
+end
+
+module ActionDispatch
+  class IntegrationTest
+    def sign_in(user, _options = {})
+      mock_omni_auth(user)
+      get callback_auth_url('github')
+    end
+
+    def signed_in?
+      session[:user_id].present? && current_user.present?
+    end
+
+    def current_user
+      @current_user ||= User.find_by(id: session[:user_id])
+    end
+  end
+end

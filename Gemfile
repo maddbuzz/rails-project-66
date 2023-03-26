@@ -88,3 +88,6 @@ end
 gem 'rollbar'
 gem 'simple_form'
 gem 'slim-rails'
+# gem 'omniauth'
+gem 'omniauth-github'
+gem 'omniauth-rails_csrf_protection'
