@@ -9,7 +9,7 @@
             = link_to t('.main'), root_path, class: 'nav-link text-dark'
           - if signed_in?
             li.nav-item.me-2
-              = link_to t('.repositories'), root_path, class: 'nav-link text-dark'
+              = link_to t('.repositories'), repositories_path, class: 'nav-link text-dark'
     ul.nav.nav-pills
       - if signed_in?
         li.nav-item

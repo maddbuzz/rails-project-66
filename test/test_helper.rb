@@ -33,7 +33,9 @@ def mock_omni_auth(user, provider = :github)
     uid: '12345',
     info: {
       email: user.email,
-      nickname: user.nickname,
+      nickname: user.nickname
+    },
+    credentials: {
       token: user.token
     }
   }

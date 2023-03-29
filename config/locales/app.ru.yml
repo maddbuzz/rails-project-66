@@ -26,3 +26,16 @@ ru:
         Repository Quality Analyzer: Анализатор качества репозиториев
         project_description: Проект, который помогает автоматически следить за качеством репозиториев на Github. Он отслеживает изменения и прогоняет их через встроенные анализаторы. Затем формирует отчеты и отправляет их пользователю.
         To learn more: Узнать больше
+
+    repositories:
+      index:
+        new: Добавить
+        name: Название
+        language: Язык
+        Last check status: Статус последней проверки
+      new:
+        title: Выберите репозиторий
+        submit: Добавить выбранный репозиторий
+      create:
+        Repository has not been added: Репозиторий не был добавлен
+        Repository has been added: Репозиторий был добавлен

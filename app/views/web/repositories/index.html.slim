@@ -1,0 +1,16 @@
+.mb-4
+  h1
+
+= link_to t('.new'), new_repository_path, class: 'btn btn-primary'
+
+table.table.table-striped.table-hover.mt-4
+  thead
+    tr
+      th[scope="col"]
+        = t('.name')
+      th[scope="col"]
+        = t('.language')
+      th[scope="col"]
+        = t('.Last check status')
+  tbody
+    == render partial: 'repository', collection: @repositories

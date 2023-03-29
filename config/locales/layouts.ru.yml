@@ -5,6 +5,7 @@ ru:
         title: Github Quality Project
       nav:
         main: Главная
+        repositories: Репозитории
         log_out: Выйти
         log_in: Войти
       footer:

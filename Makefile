@@ -11,8 +11,7 @@ install-without-production: without-production install
 	cp -n .env.example .env || true
 
 dev-start:
-	RAILS_ENV=development bin/rails assets:precompile
-	bin/rails s -p 3000 -b "127.0.0.1"
+	bin/rails s
 
 start:
 	bin/rails s -p 3000 -b "0.0.0.0"
@@ -34,6 +33,13 @@ test-system:
 
 test-system-headless:
 	MOZ_HEADLESS=1 make test-system
+
+test-all:
+	MOZ_HEADLESS=1 bin/rails test:all
+
+# test-all-coverage:
+# 	rm -rf coverage
+# 	COVERAGE=1 make test-all
 
 slim-lint:
 	slim-lint app/**/*.slim || true
