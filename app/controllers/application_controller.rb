@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   helper_method :signed_in?, :current_user
 
   include AuthConcern
-  # include Pundit::Authorization
+  include Pundit::Authorization
 
-  # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   rescue_from NotAuthenticatedError, with: :user_not_authenticated
 
   private

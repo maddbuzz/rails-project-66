@@ -4,12 +4,22 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: 
+three: 
+  github_repo_id: 3
+  link: "https://github.com/nickname1/repo_name3"
+  owner_name: "nickname1"
+  repo_name: "repo_name3"
+  language: :JavaScript
+  repo_created_at: "2022-10-23 12: 51: 44 UTC"
+  repo_updated_at: "2022-10-23 12: 51: 44 UTC"
   user: one
-  github_repo_id: 1
-  language: :JavaScript
 
-two:
-  user: two
-  github_repo_id: 2
+four:
+  github_repo_id: 4
+  link: "https://github.com/nickname2/repo_name4"
+  owner_name: "nickname2"
+  repo_name: "repo_name4"
   language: :JavaScript
+  repo_created_at: "2022-10-23 12: 51: 44 UTC"
+  repo_updated_at: "2022-10-23 12: 51: 44 UTC"
+  user: two

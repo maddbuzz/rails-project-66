@@ -4,9 +4,11 @@ require 'octokit'
 
 module Web
   class RepositoriesController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_repository, only: %i[show edit update destroy]
 
     def index
+      authorize Repository
       @repositories = Repository.all
     end
 
@@ -14,7 +16,7 @@ module Web
 
     def new
       @repository = Repository.new
-      # authorize @bulletin
+      authorize @repository
 
       @select_options = user_repos_list
                         .filter { |repo| Repository.language.values.include?(repo.language) }
@@ -25,7 +27,7 @@ module Web
 
     def create
       @repository = current_user.repositories.new(repository_params)
-      # authorize @bulletin
+      authorize @repository
 
       respond_to do |format|
         if repository_update
@@ -63,28 +65,29 @@ module Web
     private
 
     def user_repos_list
-      client = Octokit::Client.new access_token: current_user.token, auto_paginate: true
+      client = Octokit::Client.new access_token: current_user.token # , auto_paginate: true
       client.repos # получение списка репозиториев
     end
 
     def repository_update
       return false if @repository.github_repo_id.nil?
 
-      client = Octokit::Client.new access_token: current_user.token, auto_paginate: true
-      github_data = client.repo(@repository.github_repo_id)
+      client = Octokit::Client.new access_token: current_user.token # , auto_paginate: true
+      github_repo = client.repo(@repository.github_repo_id)
 
       @repository.update(
-        link: github_data[:html_url],
-        owner_name: github_data[:owner][:login],
-        repo_name: github_data[:name],
-        language: github_data[:language],
-        repo_created_at: github_data[:created_at],
-        repo_updated_at: github_data[:updated_at]
+        link: github_repo[:html_url],
+        owner_name: github_repo[:owner][:login],
+        repo_name: github_repo[:name],
+        language: github_repo[:language],
+        repo_created_at: github_repo[:created_at],
+        repo_updated_at: github_repo[:updated_at]
       )
     end
 
     def set_repository
       @repository = Repository.find(params[:id])
+      authorize @repository
     end
 
     def repository_params

@@ -78,7 +78,9 @@ group :test do
   gem 'capybara'
   gem 'minitest-power_assert'
   gem 'selenium-webdriver'
+  gem 'simplecov', require: false
   gem 'webdrivers'
+  gem 'webmock'
 end
 
 group :production do
@@ -93,3 +95,5 @@ gem 'enumerize'
 gem 'octokit', '~> 5.0'
 gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
+
+gem 'pundit', '~> 2.3'
