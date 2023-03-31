@@ -2,11 +2,11 @@
   {
     "id": 1,
     "name": "repo_name1",
-    "full_name": "nickname1/repo_name1",
+    "full_name": "user1/repo_name1",
     "owner": {
-      "login": "nickname1"
+      "login": "user1"
     },
-    "html_url": "https://github.com/nickname1/repo_name1",
+    "html_url": "https://github.com/user1/repo_name1",
     "created_at": "2022-10-23 12: 51: 44 UTC",
     "updated_at": "2022-10-23 07: 07: 16 UTC",
     "language": "JavaScript"
@@ -14,11 +14,11 @@
   {
     "id": 2,
     "name": "repo_name2",
-    "full_name": "nickname1/repo_name2",
+    "full_name": "user1/repo_name2",
     "owner": {
-      "login": "nickname1"
+      "login": "user1"
     },
-    "html_url": "https://github.com/nickname1/repo_name2",
+    "html_url": "https://github.com/user1/repo_name2",
     "created_at": "2022-10-23 12: 51: 44 UTC",
     "updated_at": "2022-10-23 07: 07: 16 UTC",
     "language": null

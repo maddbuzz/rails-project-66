@@ -8,7 +8,7 @@ REPOS_JSON_FILENAME = 'github_repos.json'
 module Web
   class RepositoriesControllerTest < ActionDispatch::IntegrationTest
     setup do
-      sign_in users(:one)
+      sign_in users(:user1)
     end
 
     test 'should get index' do

@@ -1,25 +1,37 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-three: 
-  github_repo_id: 3
-  link: "https://github.com/nickname1/repo_name3"
-  owner_name: "nickname1"
-  repo_name: "repo_name3"
+DEFAULTS: &DEFAULTS
   language: :JavaScript
   repo_created_at: "2022-10-23 12: 51: 44 UTC"
   repo_updated_at: "2022-10-23 12: 51: 44 UTC"
-  user: one
 
-four:
-  github_repo_id: 4
-  link: "https://github.com/nickname2/repo_name4"
-  owner_name: "nickname2"
-  repo_name: "repo_name4"
-  language: :JavaScript
-  repo_created_at: "2022-10-23 12: 51: 44 UTC"
-  repo_updated_at: "2022-10-23 12: 51: 44 UTC"
-  user: two
+_fixture:
+  ignore:
+    - for_user1
+    - for_user2
+
+for_user1: &for_user1
+  owner_name: user1
+  user: user1
+
+for_user2: &for_user2
+  owner_name: user2
+  user: user2
+
+<% (3..4).each do |n| %>
+repository<%= n %>:
+  <<: *for_user1
+  link: <%= "https://github.com/user1/repo_name#{n}" %>
+  repo_name: <%= "repo_name#{n}" %>
+  github_repo_id: <%= n %>
+  <<: *DEFAULTS
+<% end %>
+
+<% (5..6).each do |n| %>
+repository<%= n %>:
+  <<: *for_user2
+  link: <%= "https://github.com/user2/repo_name#{n}" %>
+  repo_name: <%= "repo_name#{n}" %>
+  github_repo_id: <%= n %>
+  <<: *DEFAULTS
+<% end %>

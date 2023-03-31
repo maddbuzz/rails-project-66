@@ -8,7 +8,7 @@ module Web
     end
 
     test 'check callback and logout' do
-      mock_omni_auth(users(:one))
+      mock_omni_auth(users(:user1))
 
       get callback_auth_path('github')
       assert_response :redirect

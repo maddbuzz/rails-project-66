@@ -18,8 +18,9 @@ module Web
       @repository = Repository.new
       authorize @repository
 
+      languages = Repository.language.values
       @select_options = user_repos_list
-                        .filter { |repo| Repository.language.values.include?(repo.language) }
+                        .filter { |repo| languages.include?(repo.language) }
                         .map { |repo| [repo.full_name, repo.id] }
     end
 
