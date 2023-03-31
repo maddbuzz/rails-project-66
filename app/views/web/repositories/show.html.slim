@@ -1,10 +1,64 @@
-p style="color: green" = notice
+- full_name = "#{@repository.owner_name}/#{@repository.repo_name}"
 
-== render @repository
+.mb-4
+  h1
+    = full_name
+a.btn.btn-primary.mb-4[rel="nofollow" data-method="post" href="/repositories/12/checks"]
+  = t('.Check')
+p
+  strong.me-2
+    = t('.Name')
+  = full_name
+p
+  strong.me-2
+    = t('.Language')
+  = @repository.language
+p
+  strong.me-2
+    = t('.Date of creation')
+  = l @repository.repo_created_at
+p
+  strong.me-2
+    = t('.Update date')
+  = l @repository.repo_updated_at
+hr
+table.table.table-striped
+  thead
+    tr
+      th[scope="col"]
+      th[scope="col"]
+        = t('.Check status')
+      th[scope="col"]
+        = t('.Commit ID')
+      th[scope="col"]
+        = t('.Check passed?')
+      th[scope="col"]
+        = t('.Check date')
+  tbody
 
-div
-  => link_to 'Edit this repository', edit_repository_path(@repository)
-  '|
-  =< link_to 'Back to repositories', repositories_path
-
-  = button_to 'Destroy this repository', @repository, method: :delete
+    tr
+      td[scope="row"]
+        a[href="/repositories/12/checks/19"]
+          | 19
+      td[scope="row"]
+        | Завершена
+      td[scope="row"]
+        a[target="_blank" rel="noopener" href="https://github.com/maddbuzz/frontend-project-46/commit/4718416"]
+          | 4718416
+      td[scope="row"]
+        | false
+      td[scope="row"]
+        | 29 марта, 06:11
+    tr
+      td[scope="row"]
+        a[href="/repositories/12/checks/18"]
+          | 18
+      td[scope="row"]
+        | Завершена
+      td[scope="row"]
+        a[target="_blank" rel="noopener" href="https://github.com/maddbuzz/frontend-project-46/commit/4718416"]
+          | 4718416
+      td[scope="row"]
+        | false
+      td[scope="row"]
+        | 29 марта, 06:11

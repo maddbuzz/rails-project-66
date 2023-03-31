@@ -39,3 +39,13 @@ ru:
       create:
         Repository has not been added: Репозиторий не был добавлен
         Repository has been added: Репозиторий был добавлен
+      show:
+        Check: Проверить
+        Name: Название
+        Language: Язык
+        Date of creation: Дата создания
+        Update date: Дата обновления
+        Check status: Статус проверки
+        Commit ID: ID коммита
+        Check passed?: Проверка пройдена?
+        Check date: Дата проверки

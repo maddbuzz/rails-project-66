@@ -23,11 +23,3 @@ make lint
 ```
 make test
 ```
-## Start system tests (with Firefox or Firefox headless)
-```
-make test-system
-```
-or
-```
-make test-system-headless
-```

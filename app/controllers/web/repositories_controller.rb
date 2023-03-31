@@ -27,7 +27,7 @@ module Web
     def edit; end
 
     def create
-      @repository = current_user.repositories.new(repository_params)
+      @repository = current_user.repositories.find_or_initialize_by(repository_params)
       authorize @repository
 
       respond_to do |format|
