@@ -97,3 +97,9 @@ gem 'omniauth-github'
 gem 'omniauth-rails_csrf_protection'
 
 gem 'pundit', '~> 2.3'
+
+gem 'dry-container', '~> 0.11.0'
+
+gem 'aasm', '~> 5.5'
+gem 'httparty'
+gem 'open3'

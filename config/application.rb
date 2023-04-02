@@ -24,3 +24,13 @@ module RailsProject66
     config.exceptions_app = routes # this line for custom error pages
   end
 end
+
+class ApplicationContainer
+  extend Dry::Container::Mixin
+
+  if Rails.env.test?
+    register :octokit_client, -> { OctokitClientStub }
+  else
+    register :octokit_client, -> { Octokit::Client }
+  end
+end

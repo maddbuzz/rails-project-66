@@ -1,0 +1,45 @@
+.mb-4
+  h1
+= link_to t('.Go to repository'), repository_path(@repository), class: 'btn btn-primary mb-4'
+h1
+  = t('.Check #', count: @check.id)
+table.table
+  tbody
+    tr
+      td
+        = t('.Date of creation')
+      td
+        = @check.check_date
+    tr
+      td
+        = t('.Status')
+      td
+        | ???
+        /= @check.aasm_state
+    tr
+      td
+        = t('.Check passed?')
+      td
+        = @check.was_the_check_passed
+    tr
+      td
+        = t('.number_of_violations')
+      td
+        = @check.number_of_violations
+    tr
+      td
+        = t('.commit ID')
+      td
+        = link_to @check.commit_id, "#{@repository.link}/commit/#{@check.commit_id}"
+table.table.table-hover.mb-5
+  thead
+    tr
+      th
+        = t('.Message')
+      th
+        = t('.Rule ID')
+      th
+        = t('.Line:Column')
+  tbody
+
+    == render partial: 'src_file', collection: @check.check_results

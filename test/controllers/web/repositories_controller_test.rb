@@ -2,8 +2,8 @@
 
 require 'test_helper'
 
-GITHUB_API_PATH = 'https://api.github.com/'
-REPOS_JSON_FILENAME = 'github_repos.json'
+# GITHUB_API_PATH = 'https://api.github.com/'
+REPOS_JSON_FILE_NAME = 'github_repos.json'
 
 module Web
   class RepositoriesControllerTest < ActionDispatch::IntegrationTest
@@ -17,23 +17,22 @@ module Web
     end
 
     test 'should get new (select from the list)' do
-      stub_request(:get, "#{GITHUB_API_PATH}user/repos")
-        .to_return(body: file_fixture(REPOS_JSON_FILENAME), status: 200, headers: { content_type: 'application/json' })
+      # stub_request(:get, "#{GITHUB_API_PATH}user/repos")
+      #   .to_return(body: file_fixture(REPOS_JSON_FILE_NAME), status: 200, headers: { content_type: 'application/json' })
 
       get new_repository_url
       assert_response :success
     end
 
     test 'should create (add) repository' do
-      github_repos = JSON.load_file file_fixture(REPOS_JSON_FILENAME) # array of "github" repos
       github_repo_id = 1
-      github_repo = github_repos.find { |repo| repo['id'] == github_repo_id }
-
       assert { !Repository.exists?(github_repo_id:) }
       repository_last_id = Repository.last.id
 
-      stub_request(:get, "#{GITHUB_API_PATH}repositories/#{github_repo_id}")
-        .to_return(body: github_repo.to_json, status: 200, headers: { content_type: 'application/json' })
+      github_repos = JSON.load_file file_fixture(REPOS_JSON_FILE_NAME) # array of "github" repos
+      github_repo = github_repos.find { |repo| repo['id'] == github_repo_id }
+      # stub_request(:get, "#{GITHUB_API_PATH}repositories/#{github_repo_id}")
+      #   .to_return(body: github_repo.to_json, status: 200, headers: { content_type: 'application/json' })
 
       post repositories_url, params: { repository: { github_repo_id: } }
       assert_redirected_to repositories_url

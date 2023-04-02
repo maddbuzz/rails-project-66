@@ -3,8 +3,7 @@
 .mb-4
   h1
     = full_name
-a.btn.btn-primary.mb-4[rel="nofollow" data-method="post" href="/repositories/12/checks"]
-  = t('.Check')
+= link_to t('.Check'), repository_checks_path(@repository), data: { turbo_method: :post }, class: 'btn btn-primary mb-4'
 p
   strong.me-2
     = t('.Name')
@@ -36,29 +35,4 @@ table.table.table-striped
         = t('.Check date')
   tbody
 
-    tr
-      td[scope="row"]
-        a[href="/repositories/12/checks/19"]
-          | 19
-      td[scope="row"]
-        | Завершена
-      td[scope="row"]
-        a[target="_blank" rel="noopener" href="https://github.com/maddbuzz/frontend-project-46/commit/4718416"]
-          | 4718416
-      td[scope="row"]
-        | false
-      td[scope="row"]
-        | 29 марта, 06:11
-    tr
-      td[scope="row"]
-        a[href="/repositories/12/checks/18"]
-          | 18
-      td[scope="row"]
-        | Завершена
-      td[scope="row"]
-        a[target="_blank" rel="noopener" href="https://github.com/maddbuzz/frontend-project-46/commit/4718416"]
-          | 4718416
-      td[scope="row"]
-        | false
-      td[scope="row"]
-        | 29 марта, 06:11
+    == render partial: 'check', collection: @checks

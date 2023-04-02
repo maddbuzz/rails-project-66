@@ -6,8 +6,9 @@ SimpleCov.start 'rails'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
-
 require 'webmock/minitest'
+
+REPOS_JSON_FILE_PATH = 'test/fixtures/files/github_repos.json'
 
 module ActiveSupport
   class TestCase
@@ -68,5 +69,18 @@ module ActionDispatch
     def current_user
       @current_user ||= User.find_by(id: session[:user_id])
     end
+  end
+end
+
+class OctokitClientStub
+  def initialize(*args); end
+
+  def repos
+    github_repos = JSON.load_file File.open(REPOS_JSON_FILE_PATH) # array of "github" repos
+    github_repos.each(&:deep_symbolize_keys!)
+  end
+
+  def repo(github_repo_id)
+    repos.find { |repo| repo[:id] == github_repo_id }
   end
 end

@@ -49,3 +49,16 @@ ru:
         Commit ID: ID коммита
         Check passed?: Проверка пройдена?
         Check date: Дата проверки
+
+    checks:
+      show:
+        Go to repository: Перейти к репозиторию
+        "Check #": "Проверка #%{count}"
+        Date of creation: Дата создания
+        Status: Статус
+        Check passed?: Проверка пройдена?
+        number_of_violations: Количество замечаний
+        commit ID: ID коммита
+        Message: Сообщение
+        Rule ID: Идентификатор правила
+        "Line:Column": Строка и символ

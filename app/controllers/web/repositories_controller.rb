@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'octokit'
-
 module Web
   class RepositoriesController < ApplicationController
     before_action :authenticate_user!
@@ -12,7 +10,9 @@ module Web
       @repositories = Repository.all
     end
 
-    def show; end
+    def show
+      @checks = @repository.checks
+    end
 
     def new
       @repository = Repository.new
@@ -20,8 +20,8 @@ module Web
 
       languages = Repository.language.values
       @select_options = user_repos_list
-                        .filter { |repo| languages.include?(repo.language) }
-                        .map { |repo| [repo.full_name, repo.id] }
+                        .filter { |repo| languages.include?(repo[:language]) }
+                        .map { |repo| [repo[:full_name], repo[:id]] }
     end
 
     def edit; end
@@ -66,14 +66,16 @@ module Web
     private
 
     def user_repos_list
-      client = Octokit::Client.new access_token: current_user.token # , auto_paginate: true
+      octokit_client = ApplicationContainer[:octokit_client]
+      client = octokit_client.new access_token: current_user.token, auto_paginate: true
       client.repos # получение списка репозиториев
     end
 
     def repository_update
       return false if @repository.github_repo_id.nil?
 
-      client = Octokit::Client.new access_token: current_user.token # , auto_paginate: true
+      octokit_client = ApplicationContainer[:octokit_client]
+      client = octokit_client.new access_token: current_user.token, auto_paginate: true
       github_repo = client.repo(@repository.github_repo_id)
 
       @repository.update(

@@ -1,0 +1,12 @@
+tr
+  td[scope="row"]
+    = link_to check.id, repository_check_path(check.repository.id, check.id)
+  td[scope="row"]
+    | ???
+    /= @check.aasm_state
+  td[scope="row"]
+    = link_to check.commit_id, "#{check.repository.link}/commit/#{check.commit_id}"
+  td[scope="row"]
+    = check.was_the_check_passed
+  td[scope="row"]
+    = check.check_date
