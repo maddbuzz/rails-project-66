@@ -3,15 +3,15 @@
 module Web
   class RepositoriesController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_repository, only: %i[show edit update destroy]
+    before_action :set_repository, only: %i[show]
 
     def index
       authorize Repository
-      @repositories = Repository.all
+      @repositories = Repository.by_owner(current_user)
     end
 
     def show
-      @checks = @repository.checks
+      @checks = @repository.checks.order(created_at: :desc)
     end
 
     def new
@@ -24,42 +24,15 @@ module Web
                         .map { |repo| [repo[:full_name], repo[:id]] }
     end
 
-    def edit; end
-
     def create
       @repository = current_user.repositories.find_or_initialize_by(repository_params)
       authorize @repository
 
-      respond_to do |format|
-        if repository_update
-          format.html { redirect_to repositories_url, notice: t('.Repository has been added') }
-          format.json { render :show, status: :created, location: @repository }
-        else
-          # format.html { render :new, status: :unprocessable_entity }
-          # format.json { render json: @repository.errors, status: :unprocessable_entity }
-          format.html { redirect_to new_repository_path, alert: t('.Repository has not been added') }
-        end
-      end
-    end
-
-    def update
-      respond_to do |format|
-        if @repository.update(repository_params)
-          format.html { redirect_to repository_url(@repository), notice: t('.Repository was successfully updated') }
-          format.json { render :show, status: :ok, location: @repository }
-        else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @repository.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-
-    def destroy
-      @repository.destroy
-
-      respond_to do |format|
-        format.html { redirect_to repositories_url, notice: t('.Repository was successfully destroyed') }
-        format.json { head :no_content }
+      if repository_update
+        redirect_to repositories_url, notice: t('.Repository has been added')
+      else
+        # render :new, status: :unprocessable_entity
+        redirect_to new_repository_path, alert: t('.Repository has not been added')
       end
     end
 

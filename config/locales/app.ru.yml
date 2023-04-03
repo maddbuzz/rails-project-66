@@ -10,6 +10,15 @@ ru:
       next: Следующая
       last: Последняя
 
+  repo_check_states:
+    started: Запущена
+    fetching: Загружается репозиторий
+    fetched: Репозиторий загружен
+    checking: Проверяется репозиторий
+    checked: Репозиторий проверен
+    completed: Завершена
+    failed: Завершена с ошибкой
+
   web:
 
     auth:
@@ -32,7 +41,7 @@ ru:
         new: Добавить
         name: Название
         language: Язык
-        Last check status: Статус последней проверки
+        Result of the last check: Результат последней проверки
       new:
         title: Выберите репозиторий
         submit: Добавить выбранный репозиторий
@@ -62,3 +71,6 @@ ru:
         Message: Сообщение
         Rule ID: Идентификатор правила
         "Line:Column": Строка и символ
+      create:
+        Wait for the previous check to complete: Дождитесь завершения предыдущей проверки
+        Check started: Проверка запущена

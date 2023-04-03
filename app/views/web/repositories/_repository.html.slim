@@ -4,4 +4,4 @@ tr
   td
     = repository.language
   td
-    | ? false
+    = repository.checks.last&.was_the_check_passed

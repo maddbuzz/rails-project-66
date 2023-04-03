@@ -19,27 +19,32 @@ class Repository
     include AASM
 
     aasm do
-      state :created, initial: true
+      state :started, initial: true
       state :fetching
       state :fetched
-      state :failed
       state :checking
       state :checked
+      state :completed
+      state :failed
 
       event :fetch do
-        transitions from: %i[created fetched failed checked], to: :fetching
-      end
-
-      event :rollback do # ???
-        transitions from: :fetching, to: :created
+        transitions from: :started, to: :fetching
       end
 
       event :mark_as_fetched do
         transitions from: :fetching, to: :fetched
       end
 
+      event :check do
+        transitions from: :fetched, to: :checking
+      end
+
       event :mark_as_checked do
         transitions from: :checking, to: :checked
+      end
+
+      event :mark_as_completed do
+        transitions from: :checked, to: :completed
       end
 
       event :mark_as_failed do

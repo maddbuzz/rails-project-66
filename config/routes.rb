@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
     delete 'auth/logout', to: 'auth#logout'
 
-    resources :repositories do
+    resources :repositories, only: %i[index show new create] do
       post 'checks', to: 'checks#create'
       get 'checks/:id', to: 'checks#show', as: :check
     end

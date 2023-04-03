@@ -14,8 +14,7 @@ table.table
       td
         = t('.Status')
       td
-        | ???
-        /= @check.aasm_state
+        = t("repo_check_states.#{@check.aasm_state}")
     tr
       td
         = t('.Check passed?')

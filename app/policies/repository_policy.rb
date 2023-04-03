@@ -16,16 +16,4 @@ class RepositoryPolicy < ApplicationPolicy
   def new?
     create?
   end
-
-  def update?
-    user == record.user
-  end
-
-  def edit?
-    update?
-  end
-
-  def destroy?
-    update?
-  end
 end
