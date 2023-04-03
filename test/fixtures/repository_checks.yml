@@ -1,0 +1,11 @@
+_fixture:
+  model_class: Repository::Check
+
+check1:
+  aasm_state: 'completed'
+  check_date: Sun, 02 Apr 2023 11:14:14.854010000 UTC +00:00
+  was_the_check_passed: true
+  number_of_violations: 0
+  commit_id: '594c26e'
+  check_results: []
+  repository: repository3

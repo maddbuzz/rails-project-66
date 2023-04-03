@@ -24,7 +24,7 @@ module Web
       assert_response :success
     end
 
-    test 'should create (add) repository' do
+    test 'should create (add) selected repository' do
       github_repo_id = 1
       assert { !Repository.exists?(github_repo_id:) }
       repository_last_id = Repository.last.id
@@ -34,8 +34,13 @@ module Web
       # stub_request(:get, "#{GITHUB_API_PATH}repositories/#{github_repo_id}")
       #   .to_return(body: github_repo.to_json, status: 200, headers: { content_type: 'application/json' })
 
-      post repositories_url, params: { repository: { github_repo_id: } }
-      assert_redirected_to repositories_url
+      post repositories_path, params: { repository: { github_repo_id: '' } }
+      assert_redirected_to new_repository_path
+      assert_flash 'web.repositories.create.Repository has not been added', :alert
+
+      post repositories_path, params: { repository: { github_repo_id: } }
+      assert_redirected_to repositories_path
+      assert_flash 'web.repositories.create.Repository has been added'
 
       last_repository = Repository.last
       assert { last_repository.github_repo_id == github_repo_id }
