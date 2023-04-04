@@ -9,7 +9,7 @@ module Web
     end
 
     test 'should get show' do
-      check = repos_checks(:bad_check)
+      check = checks(:bad_check)
       get repository_check_path(check.repository.id, check.id)
       assert_response :success
     end

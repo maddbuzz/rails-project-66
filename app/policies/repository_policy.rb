@@ -17,15 +17,3 @@ class RepositoryPolicy < ApplicationPolicy
     create?
   end
 end
-
-class Repository
-  class CheckPolicy < ApplicationPolicy
-    def show?
-      user == record.repository.user
-    end
-
-    def create?
-      user == record.repository.user
-    end
-  end
-end

@@ -4,7 +4,7 @@ require 'test_helper'
 
 class CheckRepositoryJobTest < ActiveJob::TestCase
   # test 'perform check' do
-  #   check = repo_checks(:started)
+  #   check = checks(:started)
 
   #   # uri_template = Addressable::Template.new 'https://api.github.com/repos/{owner_name}/{repo_name}'
   #   # response = load_fixture('files/response.json')

@@ -1,5 +1,5 @@
-_fixture:
-  model_class: Repository::Check
+# _fixture:
+#   model_class: Repository::Check
 
 started_check:
   repository: repository5
