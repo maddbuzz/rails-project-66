@@ -7,7 +7,7 @@ module Web
       before_action :set_repository, only: %i[show create]
 
       def show
-        @check = Check.find(params[:id])
+        @check = ::Repository::Check.find(params[:id])
         authorize @check
       end
 

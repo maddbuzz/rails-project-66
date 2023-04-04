@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class CreateChecks < ActiveRecord::Migration[7.0]
+class CreateRepositoryChecks < ActiveRecord::Migration[7.0]
   def change
-    create_table :checks do |t|
+    create_table :repository_checks do |t|
       t.string :aasm_state
       t.datetime :check_date, precision: nil
       t.boolean :was_the_check_passed, default: false
