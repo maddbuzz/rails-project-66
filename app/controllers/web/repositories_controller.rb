@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 module Web
-  class RepositoriesController < ApplicationController
+  class RepositoriesController < Web::ApplicationController
     before_action :authenticate_user!
     before_action :set_repository, only: %i[show]
 
     def index
-      authorize Repository
-      @repositories = Repository.by_owner(current_user)
+      authorize ::Repository
+      @repositories = ::Repository.by_owner(current_user)
     end
 
     def show
@@ -15,10 +15,10 @@ module Web
     end
 
     def new
-      @repository = Repository.new
+      @repository = ::Repository.new
       authorize @repository
 
-      languages = Repository.language.values
+      languages = ::Repository.language.values
       @select_options = user_repos_list
                         .filter { |repo| languages.include?(repo[:language]) }
                         .map { |repo| [repo[:full_name], repo[:id]] }
@@ -62,7 +62,7 @@ module Web
     end
 
     def set_repository
-      @repository = Repository.find(params[:id])
+      @repository = ::Repository.find(params[:id])
       authorize @repository
     end
 

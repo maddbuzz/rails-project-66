@@ -26,8 +26,8 @@ module Web
 
     test 'should create (add) selected repository' do
       github_repo_id = 1
-      assert { !Repository.exists?(github_repo_id:) }
-      repository_last_id = Repository.last.id
+      assert { !::Repository.exists?(github_repo_id:) }
+      repository_last_id = ::Repository.last.id
 
       github_repos = JSON.load_file file_fixture(REPOS_JSON_FILE_NAME) # array of "github" repos
       github_repo = github_repos.find { |repo| repo['id'] == github_repo_id }
@@ -42,7 +42,7 @@ module Web
       assert_redirected_to repositories_path
       assert_flash 'web.repositories.create.Repository has been added'
 
-      last_repository = Repository.last
+      last_repository = ::Repository.last
       assert { last_repository.github_repo_id == github_repo_id }
       assert { last_repository.id > repository_last_id }
       assert { last_repository.user == current_user }

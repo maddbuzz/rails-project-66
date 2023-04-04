@@ -59,18 +59,19 @@ ru:
         Check passed?: Проверка пройдена?
         Check date: Дата проверки
 
-    checks:
-      show:
-        Go to repository: Перейти к репозиторию
-        "Check #": "Проверка #%{count}"
-        Date of creation: Дата создания
-        Status: Статус
-        Check passed?: Проверка пройдена?
-        number_of_violations: Количество замечаний
-        commit ID: ID коммита
-        Message: Сообщение
-        Rule ID: Идентификатор правила
-        "Line:Column": Строка и символ
-      create:
-        Wait for the previous check to complete: Дождитесь завершения предыдущей проверки
-        Check started: Проверка запущена
+    repository:
+      checks:
+        show:
+          Go to repository: Перейти к репозиторию
+          "Check #": "Проверка #%{count}"
+          Date of creation: Дата создания
+          Status: Статус
+          Check passed?: Проверка пройдена?
+          number_of_violations: Количество замечаний
+          commit ID: ID коммита
+          Message: Сообщение
+          Rule ID: Идентификатор правила
+          "Line:Column": Строка и символ
+        create:
+          Wait for the previous check to complete: Дождитесь завершения предыдущей проверки
+          Check started: Проверка запущена

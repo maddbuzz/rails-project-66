@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Web
-  class AuthController < ApplicationController
+  class AuthController < Web::ApplicationController
     def callback
       user_info = request.env['omniauth.auth']
       email, nickname = user_info[:info].values_at(:email, :nickname)
