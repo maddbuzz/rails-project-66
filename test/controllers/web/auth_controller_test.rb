@@ -15,10 +15,6 @@ module Web
       assert_flash 'web.auth.callback.signed_in'
       assert signed_in?
 
-      get callback_auth_path('github')
-      assert_redirected_to root_path
-      assert_flash 'web.auth.callback.already_signed_in'
-
       delete auth_logout_path
       assert_redirected_to root_path
       assert_flash 'web.auth.logout.signed_out'

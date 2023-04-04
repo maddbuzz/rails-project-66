@@ -7,6 +7,7 @@ module Web
 
     def show
       @check = Repository::Check.find(params[:id])
+      authorize @check
     end
 
     def create
@@ -17,6 +18,7 @@ module Web
       end
 
       @check = @repository.checks.new
+      authorize @check
       @check.save!
 
       CheckRepositoryJob.perform_later @repository, @check

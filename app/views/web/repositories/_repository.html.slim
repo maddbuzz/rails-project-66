@@ -5,3 +5,5 @@ tr
     = repository.language
   td
     = repository.checks.last&.was_the_check_passed
+  td
+    = repository.checks.last&.number_of_violations

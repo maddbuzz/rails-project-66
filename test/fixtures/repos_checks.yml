@@ -1,0 +1,59 @@
+_fixture:
+  model_class: Repository::Check
+
+started_check:
+  repository: repository5
+  aasm_state: started
+  check_date:
+  was_the_check_passed: false
+  number_of_violations:
+  commit_id:
+  check_results:
+
+good_check:
+  repository: repository3
+  aasm_state: completed
+  check_date: Sun, 02 Apr 2023 11:14:14.854010000 UTC +00:00
+  was_the_check_passed: true
+  number_of_violations: 0
+  commit_id: 594c26e
+  check_results: []
+
+bad_check:
+  repository: repository4
+  aasm_state: completed
+  check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
+  was_the_check_passed: false
+  number_of_violations: 6
+  commit_id: 5702e5b
+  check_results:
+  - filePath: /src/admin/app.example.js
+    messages:
+    - message: Unexpected console statement.
+      ruleId: no-console
+      line: 33
+      column: 5
+  - filePath: /tests/app.test.js
+    messages:
+    - message: "Unexpected use of file extension \"js\" for \"./helpers/strapi.js\""
+      ruleId: import/extensions
+      line: 2
+      column: 48
+    - message: "'beforeAll' is not defined."
+      ruleId: no-undef
+      line: 4
+      column: 1
+    - message: "'afterAll' is not defined."
+      ruleId: no-undef
+      line: 8
+      column: 1
+    - message: "'it' is not defined."
+      ruleId: no-undef
+      line: 12
+      column: 1
+  - filePath: /tests/helpers/strapi.js
+    messages:
+    - message: "Unable to resolve path to module '@strapi/strapi'."
+      ruleId: import/no-unresolved
+      line: 1
+      column: 24

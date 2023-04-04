@@ -23,7 +23,6 @@ ru:
 
     auth:
       callback:
-        already_signed_in: Вы уже вошли ранее
         signed_in: Выполнен вход
       logout:
         signed_out: Выполнен выход
@@ -42,6 +41,7 @@ ru:
         name: Название
         language: Язык
         Result of the last check: Результат последней проверки
+        Number of violations: Количество замечаний
       new:
         title: Выберите репозиторий
         submit: Добавить выбранный репозиторий

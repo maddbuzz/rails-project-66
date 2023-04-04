@@ -3,8 +3,6 @@
 module Web
   class AuthController < ApplicationController
     def callback
-      return redirect_to root_path, notice: t('.already_signed_in') if signed_in?
-
       user_info = request.env['omniauth.auth']
       email, nickname = user_info[:info].values_at(:email, :nickname)
       token = user_info['credentials']['token'] # Токен пользователя, потребуется нам позднее
