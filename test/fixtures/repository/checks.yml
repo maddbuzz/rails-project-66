@@ -19,7 +19,7 @@ started_check:
   commit_id: 
   check_results:
 
-bad_check:
+hexlet_ci_app_check:
   repository: repository4
   aasm_state: completed
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00

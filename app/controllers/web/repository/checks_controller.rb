@@ -22,8 +22,7 @@ module Web
         authorize @check
         @check.save!
 
-        check_repository_job = ApplicationContainer[:check_repository_job]
-        check_repository_job.perform_later @repository, @check
+        CheckRepositoryJob.perform_later @repository, @check
         redirect_to @repository, notice: t('.Check started')
       end
 

@@ -30,9 +30,16 @@ class ApplicationContainer
 
   if Rails.env.test?
     register :octokit_client, -> { OctokitClientStub }
-    register :check_repository_job, -> { CheckRepositoryJobStub }
+    register :fetch_repo_data, ->(repository, temp_repo_path) { fetch_repository_data_stub(repository, temp_repo_path) }
   else
     register :octokit_client, -> { Octokit::Client }
-    register :check_repository_job, -> { CheckRepositoryJob }
+    register :fetch_repo_data, ->(repository, temp_repo_path) { fetch_repository_data(repository, temp_repo_path) }
   end
 end
+
+# # Получение зависимостей из контейнера:
+# octokit_client = ApplicationContainer[:octokit_client]
+# client = octokit_client.new access_token: current_user.token, auto_paginate: true
+# # Вызов зависимости с параметрами:
+# fetch_repo_data = ApplicationContainer[:fetch_repo_data]
+# check.commit_id = fetch_repo_data.call(repository, temp_repo_path)

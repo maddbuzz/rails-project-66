@@ -10,7 +10,7 @@ module Web
       end
 
       test 'should get show' do
-        check = repository_checks(:bad_check)
+        check = repository_checks(:hexlet_ci_app_check)
         get repository_check_path(check.repository.id, check.id)
         assert_response :success
       end
@@ -23,8 +23,7 @@ module Web
         assert_flash 'web.repository.checks.create.Check started'
 
         # .perform_later jobs are not actually run in tests, but we can check for their queuing:
-        check_repository_job = ApplicationContainer[:check_repository_job]
-        assert_enqueued_with job: check_repository_job
+        assert_enqueued_with job: CheckRepositoryJob
 
         post repository_checks_path(repository)
         assert_redirected_to repository
