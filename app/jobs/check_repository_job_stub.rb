@@ -2,16 +2,18 @@
 
 TEMP_GIT_CLONES_PATH = 'tmp/git_clones'
 
-class CheckRepositoryJob < ApplicationJob
+class CheckRepositoryJobStub < ApplicationJob
   queue_as :default
 
-  def perform(repository, check)
+  def perform(_repository, check)
     check.check_date = Time.current
 
-    temp_repo_path = "#{TEMP_GIT_CLONES_PATH}/#{repository.repo_name}/"
+    # temp_repo_path = "#{TEMP_GIT_CLONES_PATH}/#{repository.repo_name}"
+    temp_repo_path = 'test/fixtures/files/git_clones/hexlet-ci-app/'
 
     check.fetch!
-    fetch(repository, check, temp_repo_path)
+    check.commit_id = '5702e5b'
+    # fetch(repository, check, temp_repo_path) - repo already "fetched"
     check.mark_as_fetched!
 
     check.check!
@@ -26,21 +28,9 @@ class CheckRepositoryJob < ApplicationJob
     check.mark_as_completed!
   rescue StandardError
     check.mark_as_failed!
-  ensure
-    run_programm "rm -rf #{temp_repo_path}"
   end
 
   private
-
-  def fetch(repository, check, temp_repo_path)
-    last_commit = HTTParty.get("https://api.github.com/repos/#{repository.owner_name}/#{repository.repo_name}/commits").first
-    check.commit_id = last_commit['sha'][...7]
-
-    run_programm "rm -rf #{temp_repo_path}"
-
-    _, exit_status = run_programm "git clone #{repository.link}.git #{temp_repo_path}"
-    raise StandardError unless exit_status.zero?
-  end
 
   def linter_check(check, temp_repo_path)
     run_programm "find #{temp_repo_path} -name '*eslint*.*' -type f -delete"

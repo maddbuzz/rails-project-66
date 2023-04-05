@@ -1,15 +1,6 @@
 # _fixture:
 #   model_class: Repository::Check
 
-started_check:
-  repository: repository5
-  aasm_state: started
-  check_date:
-  was_the_check_passed: false
-  number_of_violations:
-  commit_id:
-  check_results:
-
 good_check:
   repository: repository3
   aasm_state: completed
@@ -19,6 +10,15 @@ good_check:
   commit_id: 594c26e
   check_results: []
 
+started_check:
+  repository: repository4
+  aasm_state: started
+  check_date:
+  was_the_check_passed: false
+  number_of_violations:
+  commit_id: 
+  check_results:
+
 bad_check:
   repository: repository4
   aasm_state: completed
@@ -27,13 +27,13 @@ bad_check:
   number_of_violations: 6
   commit_id: 5702e5b
   check_results:
-  - filePath: /src/admin/app.example.js
+  - filePath: src/admin/app.example.js
     messages:
     - message: Unexpected console statement.
       ruleId: no-console
       line: 33
       column: 5
-  - filePath: /tests/app.test.js
+  - filePath: tests/app.test.js
     messages:
     - message: "Unexpected use of file extension \"js\" for \"./helpers/strapi.js\""
       ruleId: import/extensions
@@ -51,7 +51,7 @@ bad_check:
       ruleId: no-undef
       line: 12
       column: 1
-  - filePath: /tests/helpers/strapi.js
+  - filePath: tests/helpers/strapi.js
     messages:
     - message: "Unable to resolve path to module '@strapi/strapi'."
       ruleId: import/no-unresolved

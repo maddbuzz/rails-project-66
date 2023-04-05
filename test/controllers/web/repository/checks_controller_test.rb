@@ -22,7 +22,9 @@ module Web
         assert_redirected_to repository
         assert_flash 'web.repository.checks.create.Check started'
 
-        assert_enqueued_with job: CheckRepositoryJob
+        # .perform_later jobs are not actually run in tests, but we can check for their queuing:
+        check_repository_job = ApplicationContainer[:check_repository_job]
+        assert_enqueued_with job: check_repository_job
 
         post repository_checks_path(repository)
         assert_redirected_to repository
