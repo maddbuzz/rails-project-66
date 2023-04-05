@@ -26,8 +26,8 @@ jobs:
     - name: Install dependencies
       run: make install-without-production
 
-    - name: Run linters
-      run: make lint
-
     - name: Run tests
       run: make test
+
+    - name: Run linters
+      run: make lint
