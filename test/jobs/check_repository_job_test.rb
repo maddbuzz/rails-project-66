@@ -11,6 +11,7 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
 
     CheckRepositoryJob.perform_now check.repository, check
 
+    check.reload
     assert { check.completed? }
 
     assert { check.was_the_check_passed == hexlet_ci_app_check.was_the_check_passed }
