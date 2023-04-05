@@ -25,10 +25,10 @@ class CheckRepositoryJob < ApplicationJob
 
     check.save!
     check.mark_as_completed!
-  rescue StandardError
-    check.mark_as_failed!
-  ensure
-    run_programm "rm -rf #{temp_repo_path}"
+  # rescue StandardError
+  #   check.mark_as_failed!
+  # ensure
+  #   run_programm "rm -rf #{temp_repo_path}"
   end
 end
 
