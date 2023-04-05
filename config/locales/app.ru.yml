@@ -3,13 +3,6 @@ ru:
   user_not_authorized: Вы не авторизованы для выполнения этого действия
   user_not_admin: Вам необходимо быть администратором для выполнения этого действия
 
-  views:
-    pagination:
-      first: Первая
-      previous: Предыдущая
-      next: Следующая
-      last: Последняя
-
   repo_check_states:
     started: Запущена
     fetching: Загружается репозиторий
@@ -18,6 +11,19 @@ ru:
     checked: Репозиторий проверен
     completed: Завершена
     failed: Завершена с ошибкой
+
+  layouts:
+    shared:
+      head:
+        title: Github Quality Project
+      nav:
+        main: Главная
+        repositories: Репозитории
+        log_out: Выйти
+        log_in: Войти
+      footer:
+        created_by: Проект
+        hexlet_student: 'студента "Хекслета"'
 
   web:
 
