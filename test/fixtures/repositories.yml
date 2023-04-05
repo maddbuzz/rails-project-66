@@ -35,3 +35,10 @@ repository<%= n %>:
   github_repo_id: <%= n %>
   <<: *DEFAULTS
 <% end %>
+
+hexlet_ci_app:
+  <<: *for_user1
+  link: https://github.com/user1/hexlet-ci-app
+  repo_name: hexlet-ci-app
+  github_repo_id: 7
+  <<: *DEFAULTS

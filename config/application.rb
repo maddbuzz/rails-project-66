@@ -30,10 +30,12 @@ class ApplicationContainer
 
   if Rails.env.test?
     register :octokit_client, -> { OctokitClientStub }
-    register :fetch_repo_data, ->(repository, temp_repo_path) { fetch_repository_data_stub(repository, temp_repo_path) }
+    register :fetch_repo_data, ->(repository, temp_repo_path) { fetch_repo_data_stub(repository, temp_repo_path) }
+    register :linter_check, ->(temp_repo_path) { linter_check_stub(temp_repo_path) }
   else
     register :octokit_client, -> { Octokit::Client }
-    register :fetch_repo_data, ->(repository, temp_repo_path) { fetch_repository_data(repository, temp_repo_path) }
+    register :fetch_repo_data, ->(repository, temp_repo_path) { fetch_repo_data(repository, temp_repo_path) }
+    register :linter_check, ->(temp_repo_path) { linter_check(temp_repo_path) }
   end
 end
 

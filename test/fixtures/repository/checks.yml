@@ -10,8 +10,8 @@ good_check:
   commit_id: 594c26e
   check_results: []
 
-started_check:
-  repository: repository4
+hexlet_ci_app_started_check:
+  repository: hexlet_ci_app
   aasm_state: started
   check_date:
   was_the_check_passed: false
@@ -19,8 +19,8 @@ started_check:
   commit_id: 
   check_results:
 
-hexlet_ci_app_check:
-  repository: repository4
+hexlet_ci_app_completed_check:
+  repository: hexlet_ci_app
   aasm_state: completed
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
   was_the_check_passed: false

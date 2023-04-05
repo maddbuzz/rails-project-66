@@ -16,7 +16,8 @@ class CheckRepositoryJob < ApplicationJob
     check.mark_as_fetched!
 
     check.check!
-    json_string, check.was_the_check_passed = linter_check(temp_repo_path)
+    linter_check = ApplicationContainer[:linter_check]
+    json_string, check.was_the_check_passed = linter_check.call(temp_repo_path)
     check.mark_as_checked!
 
     check.parse!
@@ -25,21 +26,18 @@ class CheckRepositoryJob < ApplicationJob
 
     check.save!
     check.mark_as_completed!
-    # rescue StandardError
-    #   check.mark_as_failed!
-    # ensure
-    #   run_programm "rm -rf #{temp_repo_path}"
+  rescue StandardError
+    check.mark_as_failed!
+  ensure
+    run_programm "rm -rf #{temp_repo_path}"
   end
 end
 
-def fetch_repository_data(repository, temp_repo_path)
+def fetch_repo_data(repository, temp_repo_path)
   run_programm "rm -rf #{temp_repo_path}"
 
-  # _, exit_status = run_programm "git clone #{repository.link}.git #{temp_repo_path}"
-  # raise StandardError unless exit_status.zero?
-  stdout, exit_status = run_programm "git clone #{repository.link}.git #{temp_repo_path}"
-  pp 'git clone stdout', stdout
-  pp 'git clone exit_status', exit_status
+  _, exit_status = run_programm "git clone #{repository.link}.git #{temp_repo_path}"
+  raise StandardError unless exit_status.zero?
 
   last_commit = HTTParty.get("https://api.github.com/repos/#{repository.owner_name}/#{repository.repo_name}/commits").first
   last_commit['sha'][...7]

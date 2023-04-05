@@ -9,7 +9,7 @@ require 'rails/test_help'
 require 'webmock/minitest'
 
 REPOS_JSON_FILE_PATH = 'test/fixtures/files/github_repos.json'
-STUB_REPO_FILE_PATH = 'test/fixtures/files/git_clones/hexlet-ci-app'
+HEXLET_CI_APP_LINTER_RESULTS_FILE_PATH = 'test/fixtures/files/hexlet-ci-app_linter_results.json'
 
 module ActiveSupport
   class TestCase
@@ -86,14 +86,11 @@ class OctokitClientStub
   end
 end
 
-def fetch_repository_data_stub(_repository, temp_repo_path)
-  run_programm "rm -rf #{temp_repo_path}"
-
-  # _, exit_status = run_programm "git clone #{STUB_REPO_FILE_PATH} #{temp_repo_path}"
-  # raise StandardError unless exit_status.zero?
-  stdout, exit_status = run_programm "git clone #{STUB_REPO_FILE_PATH} #{temp_repo_path}"
-  pp 'stub git clone stdout', stdout
-  pp 'stub git clone exit_status', exit_status
-
+def fetch_repo_data_stub(_repository, _temp_repo_path)
   '5702e5b'
+end
+
+def linter_check_stub(_temp_repo_path)
+  json_string = File.read(HEXLET_CI_APP_LINTER_RESULTS_FILE_PATH)
+  [json_string, false]
 end

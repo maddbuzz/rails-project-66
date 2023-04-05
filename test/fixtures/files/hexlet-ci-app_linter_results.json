@@ -1,0 +1,669 @@
+[
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/config/admin.js",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/config/api.js",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/config/database.js",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/config/middlewares.js",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/config/plugins.js",
+    "messages": [],
+    "suppressedMessages": [
+      {
+        "ruleId": "no-unused-vars",
+        "severity": 2,
+        "message": "'env' is defined but never used.",
+        "line": 1,
+        "column": 21,
+        "nodeType": "Identifier",
+        "messageId": "unusedVar",
+        "endLine": 1,
+        "endColumn": 24,
+        "suppressions": [
+          {
+            "kind": "directive",
+            "justification": ""
+          }
+        ]
+      }
+    ],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/config/server.js",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/src/admin/app.example.js",
+    "messages": [
+      {
+        "ruleId": "no-console",
+        "severity": 1,
+        "message": "Unexpected console statement.",
+        "line": 33,
+        "column": 5,
+        "nodeType": "MemberExpression",
+        "messageId": "unexpected",
+        "endLine": 33,
+        "endColumn": 16
+      }
+    ],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 1,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "export default {\n  config: {\n    locales: [\n      // 'ar',\n      // 'fr',\n      // 'cs',\n      // 'de',\n      // 'dk',\n      // 'es',\n      // 'he',\n      // 'id',\n      // 'it',\n      // 'ja',\n      // 'ko',\n      // 'ms',\n      // 'nl',\n      // 'no',\n      // 'pl',\n      // 'pt-BR',\n      // 'pt',\n      // 'ru',\n      // 'sk',\n      // 'sv',\n      // 'th',\n      // 'tr',\n      // 'uk',\n      // 'vi',\n      // 'zh-Hans',\n      // 'zh',\n    ],\n  },\n  bootstrap(app) {\n    console.log(app);\n  },\n};\n",
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/src/admin/webpack.config.example.js",
+    "messages": [],
+    "suppressedMessages": [
+      {
+        "ruleId": "no-unused-vars",
+        "severity": 2,
+        "message": "'webpack' is defined but never used.",
+        "line": 2,
+        "column": 27,
+        "nodeType": "Identifier",
+        "messageId": "unusedVar",
+        "endLine": 2,
+        "endColumn": 34,
+        "suppressions": [
+          {
+            "kind": "directive",
+            "justification": ""
+          }
+        ]
+      }
+    ],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/src/index.js",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/tests/app.test.js",
+    "messages": [
+      {
+        "ruleId": "import/extensions",
+        "severity": 2,
+        "message": "Unexpected use of file extension \"js\" for \"./helpers/strapi.js\"",
+        "line": 2,
+        "column": 48,
+        "nodeType": "Literal",
+        "endLine": 2,
+        "endColumn": 69
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'beforeAll' is not defined.",
+        "line": 4,
+        "column": 1,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 4,
+        "endColumn": 10
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'afterAll' is not defined.",
+        "line": 8,
+        "column": 1,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 8,
+        "endColumn": 9
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'it' is not defined.",
+        "line": 12,
+        "column": 1,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 12,
+        "endColumn": 3
+      }
+    ],
+    "suppressedMessages": [
+      {
+        "ruleId": "no-unused-vars",
+        "severity": 2,
+        "message": "'fs' is assigned a value but never used.",
+        "line": 1,
+        "column": 7,
+        "nodeType": "Identifier",
+        "messageId": "unusedVar",
+        "endLine": 1,
+        "endColumn": 9,
+        "suppressions": [
+          {
+            "kind": "directive",
+            "justification": ""
+          }
+        ]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'expect' is not defined.",
+        "line": 13,
+        "column": 3,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 13,
+        "endColumn": 9,
+        "suppressions": [
+          {
+            "kind": "directive",
+            "justification": ""
+          }
+        ]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'strapi' is not defined.",
+        "line": 13,
+        "column": 10,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 13,
+        "endColumn": 16,
+        "suppressions": [
+          {
+            "kind": "directive",
+            "justification": ""
+          }
+        ]
+      }
+    ],
+    "errorCount": 4,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "const fs = require('fs'); // eslint-disable-line\nconst { setupStrapi, cleanupStrapi } = require('./helpers/strapi.js');\n\nbeforeAll(async () => {\n  await setupStrapi();\n});\n\nafterAll(async () => {\n  await cleanupStrapi();\n});\n\nit('strapi is defined', () => {\n  expect(strapi).toBeDefined(); // eslint-disable-line\n});\n",
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  },
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/tests/helpers/strapi.js",
+    "messages": [
+      {
+        "ruleId": "import/no-unresolved",
+        "severity": 2,
+        "message": "Unable to resolve path to module '@strapi/strapi'.",
+        "line": 1,
+        "column": 24,
+        "nodeType": "Literal",
+        "endLine": 1,
+        "endColumn": 40
+      }
+    ],
+    "suppressedMessages": [
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'strapi' is not defined.",
+        "line": 9,
+        "column": 16,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 9,
+        "endColumn": 22,
+        "suppressions": [
+          {
+            "kind": "directive",
+            "justification": ""
+          }
+        ]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'strapi' is not defined.",
+        "line": 17,
+        "column": 22,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 17,
+        "endColumn": 28,
+        "suppressions": [
+          {
+            "kind": "directive",
+            "justification": ""
+          }
+        ]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'strapi' is not defined.",
+        "line": 20,
+        "column": 9,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 20,
+        "endColumn": 15,
+        "suppressions": [
+          {
+            "kind": "directive",
+            "justification": ""
+          }
+        ]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'strapi' is not defined.",
+        "line": 30,
+        "column": 9,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 30,
+        "endColumn": 15,
+        "suppressions": [
+          {
+            "kind": "directive",
+            "justification": ""
+          }
+        ]
+      }
+    ],
+    "errorCount": 1,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "source": "const Strapi = require('@strapi/strapi');\nconst fs = require('fs');\n\nlet instance;\n\nasync function setupStrapi() {\n  if (!instance) {\n    await Strapi().load();\n    instance = strapi; // eslint-disable-line\n\n    await instance.server.mount();\n  }\n  return instance;\n}\n\nasync function cleanupStrapi() {\n  const dbSettings = strapi.config.get('database.connections.default.settings'); // eslint-disable-line\n\n  // close server to release the db-file\n  await strapi.server.httpServer.close(); // eslint-disable-line\n\n  // delete test database after all tests have completed\n  if (dbSettings && dbSettings.filename) {\n    const tmpDbFile = `${__dirname}/../${dbSettings.filename}`;\n    if (fs.existsSync(tmpDbFile)) {\n      fs.unlinkSync(tmpDbFile);\n    }\n  }\n  // close the connection to the database\n  await strapi.db.connection.destroy(); // eslint-disable-line\n}\n\nmodule.exports = { setupStrapi, cleanupStrapi };\n",
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  }
+]
