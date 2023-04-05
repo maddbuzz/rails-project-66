@@ -89,8 +89,11 @@ end
 def fetch_repository_data_stub(_repository, temp_repo_path)
   run_programm "rm -rf #{temp_repo_path}"
 
-  _, exit_status = run_programm "git clone #{STUB_REPO_FILE_PATH} #{temp_repo_path}"
-  raise StandardError unless exit_status.zero?
+  # _, exit_status = run_programm "git clone #{STUB_REPO_FILE_PATH} #{temp_repo_path}"
+  # raise StandardError unless exit_status.zero?
+  stdout, exit_status = run_programm "git clone #{STUB_REPO_FILE_PATH} #{temp_repo_path}"
+  pp 'stub git clone stdout', stdout
+  pp 'stub git clone exit_status', exit_status
 
   '5702e5b'
 end
