@@ -35,8 +35,11 @@ end
 def fetch_repository_data(repository, temp_repo_path)
   run_programm "rm -rf #{temp_repo_path}"
 
-  _, exit_status = run_programm "git clone #{repository.link}.git #{temp_repo_path}"
-  raise StandardError unless exit_status.zero?
+  # _, exit_status = run_programm "git clone #{repository.link}.git #{temp_repo_path}"
+  # raise StandardError unless exit_status.zero?
+  stdout, exit_status = run_programm "git clone #{repository.link}.git #{temp_repo_path}"
+  pp 'git clone stdout', stdout
+  pp 'git clone exit_status', exit_status
 
   last_commit = HTTParty.get("https://api.github.com/repos/#{repository.owner_name}/#{repository.repo_name}/commits").first
   last_commit['sha'][...7]
