@@ -31,8 +31,10 @@ class CheckRepositoryJob < ApplicationJob
 
     check.save!
     check.mark_as_completed!
-  rescue StandardError
+  rescue StandardError => e
     check.mark_as_failed!
+    Rails.logger.debug e
+    Rollbar.error e
   ensure
     run_programm "rm -rf #{temp_repo_path}"
   end
