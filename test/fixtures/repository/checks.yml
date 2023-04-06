@@ -10,8 +10,8 @@ good_check:
   commit_id: 594c26e
   check_results: []
 
-hexlet_ci_app_started_check:
-  repository: hexlet_ci_app
+javascript_app_started_check:
+  repository: javascript_app
   aasm_state: started
   check_date:
   was_the_check_passed: false
@@ -19,8 +19,8 @@ hexlet_ci_app_started_check:
   commit_id: 
   check_results:
 
-hexlet_ci_app_completed_check:
-  repository: hexlet_ci_app
+javascript_app_completed_check:
+  repository: javascript_app
   aasm_state: completed
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
   was_the_check_passed: false
@@ -57,3 +57,37 @@ hexlet_ci_app_completed_check:
       ruleId: import/no-unresolved
       line: 1
       column: 24
+
+ruby_app_started_check:
+  repository: ruby_app
+  aasm_state: started
+  check_date:
+  was_the_check_passed: false
+  number_of_violations:
+  commit_id: 
+  check_results:
+
+ruby_app_completed_check:
+  repository: ruby_app
+  aasm_state: completed
+  check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
+  was_the_check_passed: false
+  number_of_violations: 3
+  commit_id: 5702e5b
+  check_results:
+  - filePath: app/controllers/application_controller.rb
+    messages:
+    - message: Missing frozen string literal comment.
+      ruleId: Style/FrozenStringLiteralComment
+      line: 1
+      column: 1
+  - filePath: app/controllers/errors_controller.rb
+    messages:
+    - message: Prefer single-quoted strings when you don't need string interpolation or special symbols.
+      ruleId: Style/StringLiterals
+      line: 4
+      column: 10
+    - message: Use the new Ruby 1.9 hash syntax.
+      ruleId: Style/HashSyntax
+      line: 7
+      column: 12

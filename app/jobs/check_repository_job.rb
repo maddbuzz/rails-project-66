@@ -15,13 +15,18 @@ class CheckRepositoryJob < ApplicationJob
     check.commit_id = fetch_repo_data.call(repository, temp_repo_path)
     check.mark_as_fetched!
 
+    # # # # control_class = Elements.const_get(as.capitalize)
+    language_class = repository.language.to_s.downcase.upcase_first.constantize
+
     check.check!
-    linter_check = ApplicationContainer[:linter_check]
-    json_string, check.was_the_check_passed = linter_check.call(temp_repo_path)
+    lint_check = ApplicationContainer[:lint_check]
+    json_string = lint_check.call(temp_repo_path, language_class)
     check.mark_as_checked!
 
     check.parse!
-    check.check_results, check.number_of_violations = parse(temp_repo_path, json_string)
+    check.check_results, number_of_violations = parse_check(temp_repo_path, language_class, json_string)
+    check.number_of_violations = number_of_violations
+    check.was_the_check_passed = number_of_violations.zero?
     check.mark_as_parsed!
 
     check.save!
@@ -43,37 +48,12 @@ def fetch_repo_data(repository, temp_repo_path)
   last_commit['sha'][...7]
 end
 
-def linter_check(temp_repo_path)
-  run_programm "find #{temp_repo_path} -name '*eslint*.*' -type f -delete"
-  stdout, exit_status = run_programm "yarn run eslint --format json #{temp_repo_path}"
-  json_string = stdout.split("\n")[2]
-  [json_string, exit_status.zero?]
+def lint_check(temp_repo_path, language_class)
+  language_class.linter(temp_repo_path) # json_string
 end
 
-def parse(temp_repo_path, json_string)
-  eslint_files_results = JSON.parse(json_string) # array
-
-  number_of_violations = 0
-  check_results = []
-
-  eslint_files_results
-    .filter { |file_result| !file_result['messages'].empty? }
-    .each do |file_result|
-    src_file = {}
-    src_file['filePath'] = file_result['filePath'].partition(temp_repo_path).last
-    src_file['messages'] = []
-    file_result['messages'].each do |message|
-      violation = {}
-      violation['message'] = message['message']
-      violation['ruleId'] = message['ruleId']
-      violation['line'] = message['line']
-      violation['column'] = message['column']
-      src_file['messages'] << violation
-      number_of_violations += 1
-    end
-    check_results << src_file
-  end
-  [check_results, number_of_violations]
+def parse_check(temp_repo_path, language_class, json_string)
+  language_class.parser(temp_repo_path, json_string) # [check_results, number_of_violations]
 end
 
 def run_programm(command)

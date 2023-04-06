@@ -1,0 +1,310 @@
+{
+  "metadata": {
+    "rubocop_version": "1.48.1",
+    "ruby_engine": "ruby",
+    "ruby_version": "3.1.2",
+    "ruby_patchlevel": "20",
+    "ruby_platform": "x86_64-linux"
+  },
+  "files": [
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/Gemfile",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/Rakefile",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/channels/application_cable/channel.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/channels/application_cable/connection.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/controllers/application_controller.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Missing frozen string literal comment.",
+          "cop_name": "Style/FrozenStringLiteralComment",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "start_line": 1,
+            "start_column": 1,
+            "last_line": 1,
+            "last_column": 1,
+            "length": 1,
+            "line": 1,
+            "column": 1
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/controllers/concerns/auth_concern.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/controllers/errors_controller.rb",
+      "offenses": [
+        {
+          "severity": "convention",
+          "message": "Prefer single-quoted strings when you don't need string interpolation or special symbols.",
+          "cop_name": "Style/StringLiterals",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "start_line": 4,
+            "start_column": 10,
+            "last_line": 4,
+            "last_column": 19,
+            "length": 10,
+            "line": 4,
+            "column": 10
+          }
+        },
+        {
+          "severity": "convention",
+          "message": "Use the new Ruby 1.9 hash syntax.",
+          "cop_name": "Style/HashSyntax",
+          "corrected": false,
+          "correctable": true,
+          "location": {
+            "start_line": 7,
+            "start_column": 12,
+            "last_line": 7,
+            "last_column": 21,
+            "length": 10,
+            "line": 7,
+            "column": 12
+          }
+        }
+      ]
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/controllers/web/application_controller.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/controllers/web/auth_controller.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/controllers/web/home_controller.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/controllers/web/repositories_controller.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/controllers/web/repository/application_controller.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/controllers/web/repository/checks_controller.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/helpers/application_helper.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/helpers/home_helper.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/jobs/application_job.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/jobs/check_repository_job.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/mailers/application_mailer.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/models/application_record.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/models/repository.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/models/repository/check.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/models/user.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/policies/application_policy.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/policies/repository/check_policy.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/app/policies/repository_policy.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/bin/rails",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/bin/rake",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/bin/setup",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config.ru",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/application.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/boot.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/environment.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/environments/development.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/environments/production.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/environments/test.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/initializers/assets.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/initializers/content_security_policy.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/initializers/filter_parameter_logging.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/initializers/inflections.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/initializers/locale.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/initializers/omniauth.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/initializers/permissions_policy.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/initializers/rollbar.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/initializers/simple_form.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/initializers/simple_form_bootstrap.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/puma.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/config/routes.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/db/migrate/20230325094238_create_users.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/db/migrate/20230328052505_create_repositories.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/db/migrate/20230401085839_create_repository_checks.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/application_system_test_case.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/channels/application_cable/connection_test.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/controllers/web/auth_controller_test.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/controllers/web/home_controller_test.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/controllers/web/repositories_controller_test.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/controllers/web/repository/checks_controller_test.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/jobs/check_repository_job_test.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/models/repository/check_test.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/models/repository_test.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/models/user_test.rb",
+      "offenses": []
+    },
+    {
+      "path": "/home/buzz/rails-project-66/tmp/git_clones/ruby-app/test/test_helper.rb",
+      "offenses": []
+    }
+  ],
+  "summary": {
+    "offense_count": 3,
+    "target_file_count": 61,
+    "inspected_file_count": 61
+  }
+}

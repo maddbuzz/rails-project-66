@@ -36,9 +36,17 @@ repository<%= n %>:
   <<: *DEFAULTS
 <% end %>
 
-hexlet_ci_app:
+javascript_app:
   <<: *for_user1
   link: https://github.com/user1/hexlet-ci-app
   repo_name: hexlet-ci-app
   github_repo_id: 7
   <<: *DEFAULTS
+
+ruby_app:
+  <<: *for_user2
+  link: https://github.com/user2/ruby-app
+  repo_name: ruby-app
+  github_repo_id: 8
+  <<: *DEFAULTS
+  language: :Ruby

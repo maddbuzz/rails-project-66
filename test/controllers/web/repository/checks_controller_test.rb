@@ -10,7 +10,7 @@ module Web
       end
 
       test 'should get show' do
-        check = repository_checks(:hexlet_ci_app_completed_check)
+        check = repository_checks(:javascript_app_completed_check)
         get repository_check_path(check.repository.id, check.id)
         assert_response :success
       end

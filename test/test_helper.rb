@@ -8,8 +8,10 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
 
-REPOS_JSON_FILE_PATH = 'test/fixtures/files/github_repos.json'
-HEXLET_CI_APP_LINTER_RESULTS_FILE_PATH = 'test/fixtures/files/hexlet-ci-app_linter_results.json'
+GITHUB_REPOS_JSON_PATH = 'test/fixtures/files/github_repos.json'
+ESLINTER_JSON_PATH = 'test/fixtures/files/eslinter.json'
+RUBOCOP_JSON_PATH = 'test/fixtures/files/rubocop.json'
+STUBS_MAP = { 'Javascript' => ESLINTER_JSON_PATH, 'Ruby' => RUBOCOP_JSON_PATH }.freeze
 
 module ActiveSupport
   class TestCase
@@ -77,7 +79,7 @@ class OctokitClientStub
   def initialize(*args); end
 
   def repos
-    github_repos = JSON.load_file File.open(REPOS_JSON_FILE_PATH) # array of "github" repos
+    github_repos = JSON.load_file File.open(GITHUB_REPOS_JSON_PATH) # array of "github" repos
     github_repos.each(&:deep_symbolize_keys!)
   end
 
@@ -87,10 +89,9 @@ class OctokitClientStub
 end
 
 def fetch_repo_data_stub(_repository, _temp_repo_path)
-  '5702e5b'
+  '5702e5b' # commit_id
 end
 
-def linter_check_stub(_temp_repo_path)
-  json_string = File.read(HEXLET_CI_APP_LINTER_RESULTS_FILE_PATH)
-  [json_string, false]
+def lint_check_stub(_temp_repo_path, language_class)
+  File.read(STUBS_MAP[language_class.to_s]) # json_string
 end
