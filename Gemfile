@@ -69,7 +69,6 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-  gem 'rubocop-rails', require: false
   # gem 'faker'
 end
 
@@ -85,6 +84,10 @@ end
 
 group :production do
   gem 'pg'
+end
+
+group :development, :production do
+  gem 'rubocop-rails', require: false
 end
 
 gem 'rollbar'
