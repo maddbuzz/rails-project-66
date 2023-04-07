@@ -11,7 +11,7 @@ require 'webmock/minitest'
 GITHUB_REPOS_JSON_PATH = 'test/fixtures/files/github_repos.json'
 ESLINTER_JSON_PATH = 'test/fixtures/files/eslinter.json'
 RUBOCOP_JSON_PATH = 'test/fixtures/files/rubocop.json'
-STUBS_MAP = { 'Javascript' => ESLINTER_JSON_PATH, 'Ruby' => RUBOCOP_JSON_PATH }.freeze
+LINTERS_RESULT_MAP = { 'JavaScript' => ESLINTER_JSON_PATH, 'Ruby' => RUBOCOP_JSON_PATH }.freeze
 
 module ActiveSupport
   class TestCase
@@ -93,5 +93,6 @@ def fetch_repo_data_stub(_repository, _temp_repo_path)
 end
 
 def lint_check_stub(_temp_repo_path, language_class)
-  File.read(STUBS_MAP[language_class.to_s]) # json_string
+  language = language_class.to_s.split('::').last
+  File.read(LINTERS_RESULT_MAP[language]) # json_string
 end
