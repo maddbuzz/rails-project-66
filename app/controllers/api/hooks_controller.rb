@@ -8,7 +8,7 @@ module Api
       case request.headers['X-GitHub-Event']
       when 'ping'
         accept_ping
-      # TODO when 'push', nil # for hexlet check only!
+      # TODO: when 'push', nil # for hexlet check only!
       when 'push'
         accept_push repository_params[:id]
       else
