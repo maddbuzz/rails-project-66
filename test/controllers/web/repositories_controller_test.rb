@@ -39,6 +39,9 @@ module Web
       assert_flash 'web.repositories.create.Repository has not been added', :alert
 
       post repositories_path, params: { repository: { github_repo_id: } }
+
+      assert_enqueued_with job: CreateRepositoryWebhookJob
+
       assert_redirected_to repositories_path
       assert_flash 'web.repositories.create.Repository has been added'
 

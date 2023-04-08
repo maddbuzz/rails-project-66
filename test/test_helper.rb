@@ -86,6 +86,8 @@ class OctokitClientStub
   def repo(github_repo_id)
     repos.find { |repo| repo[:id] == github_repo_id }
   end
+
+  def create_hook(*args, **kwargs); end
 end
 
 def fetch_repo_data_stub(_repository, _temp_repo_path)

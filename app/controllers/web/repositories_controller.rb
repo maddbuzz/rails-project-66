@@ -2,8 +2,20 @@
 
 module Web
   class RepositoriesController < Web::ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: %i[index show new create]
     before_action :set_repository, only: %i[show]
+
+    def github_webhook
+      # @repository = ?
+      # last_check = @repository.checks.last
+      # return unless !last_check || last_check.completed? || last_check.failed?
+
+      # @check = @repository.checks.new
+      # @check.save!
+
+      # CheckRepositoryJob.perform_later @repository, @check
+      # flash[:notice] = t('.webhook_check_started', repo: @repository.repo_name) if @repository.user == current_user
+    end
 
     def index
       authorize ::Repository
@@ -29,6 +41,7 @@ module Web
       authorize @repository
 
       if repository_update
+        CreateRepositoryWebhookJob.perform_later(@repository)
         redirect_to repositories_url, notice: t('.Repository has been added')
       else
         # render :new, status: :unprocessable_entity
