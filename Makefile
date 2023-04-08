@@ -11,7 +11,14 @@ install-without-production: without-production install
 	cp -n .env.example .env || true
 
 dev-start:
-	bin/rails s
+	#
+	# Для того, чтобы проверить github_webhook'и локально, можно использовать программу для создания HTTP-туннелей (ngrok.com)
+	# Но нужно будет заполнить соответствующие значения в .env для BASE_URL, GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET.
+	# BASE_URL вообще будет каждый раз меняться при перезапуске ngrok, поэтому помимо .env нужно будет его менять
+	# и в приложении OAuth https://github.com/settings/applications/2162079
+	# ~/ngrok.dir/ngrok http 3000
+	#
+	bin/rails s -p 3000
 
 start:
 	bin/rails s -p 3000 -b "0.0.0.0"
