@@ -19,7 +19,7 @@ class CreateRepositoryWebhookJob < ApplicationJob
       {
         url:,
         content_type: 'json',
-        insecure_ssl: '0'
+        insecure_ssl: Rails.env.production? ? '0' : '1'
       },
       {
         events: %w[push pull_request],
