@@ -7,11 +7,14 @@ class CreateRepositoryWebhookJob < ApplicationJob
     user_token = repository.user.token
     octokit_client = ApplicationContainer[:octokit_client]
     client = octokit_client.new access_token: user_token, auto_paginate: true
-    # url = Rails.application.routes.url_helpers.github_webhook_url
-    url = 'https://webhook.site/2da4e6ff-56e3-4938-b322-10b8384f5fb4'
+
+    hooks_array = client.hooks(repository.github_repo_id)
+    Rails.logger.debug { "hooks_array = #{hooks_array}\n" }
+
+    # url = 'https://webhook.site/2da4e6ff-56e3-4938-b322-10b8384f5fb4'
+    url = Rails.application.routes.url_helpers.api_checks_url
     hook_info = client.create_hook(
-      repository.github_repo_id,
-      # "#{repository.owner_name}/#{repository.repo_name}",
+      repository.github_repo_id, # "#{repository.owner_name}/#{repository.repo_name}",
       'web',
       {
         url:,
@@ -19,11 +22,16 @@ class CreateRepositoryWebhookJob < ApplicationJob
         insecure_ssl: '0'
       },
       {
-        events: %w[push],
+        events: %w[push pull_request],
         active: true
       }
     )
-    Rails.logger.debug hook_info
-    # debugger
+    # if already exists, nothing to worry: Octokit::UnprocessableEntity, 422 - Validation Failed,
+    #   Error summary:
+    #     resource: Hook
+    #     code: custom
+    #     message: Hook already exists on this repository
+
+    Rails.logger.debug { "hook_info = #{hook_info}\n" }
   end
 end

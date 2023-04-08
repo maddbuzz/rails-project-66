@@ -25,6 +25,12 @@ ru:
         created_by: Проект
         hexlet_student: 'студента "Хекслета"'
 
+  api:
+
+    hooks:
+      github_webhook:
+        webhook_check_started: Репозиторий %{repo} обновился, запущена автоматическая проверка
+
   web:
 
     auth:
@@ -64,8 +70,6 @@ ru:
         Commit ID: ID коммита
         Check passed?: Проверка пройдена?
         Check date: Дата проверки
-      github_webhook:
-        webhook_check_started: Репозиторий %{repo} обновился, запущена автоматическая проверка
 
     repository:
       checks:
