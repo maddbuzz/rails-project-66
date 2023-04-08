@@ -30,8 +30,8 @@ module Api
 
       CheckRepositoryJob.perform_later repository, check
       render json: { '200': 'Ok' }, status: :ok
-      debugger
-      flash[:notice] = t('.webhook_check_started', repo: repository.repo_name) if repository.user == current_user
+      # debugger
+      # flash[:notice] = t('.webhook_check_started', repo: repository.repo_name) if repository.user == current_user
     end
 
     def accept_ping
