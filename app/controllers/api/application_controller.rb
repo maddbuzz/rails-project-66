@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module API
+module Api
   class ApplicationController < ::ApplicationController
   end
 end

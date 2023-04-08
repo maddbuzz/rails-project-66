@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-module API
-  class HooksController < API::ApplicationController
+module Api
+  class HooksController < Api::ApplicationController
     # before_action :set_repository, only: %i[show]
 
     def github_webhook
