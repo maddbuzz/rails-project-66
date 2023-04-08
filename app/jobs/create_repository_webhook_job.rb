@@ -22,7 +22,7 @@ class CreateRepositoryWebhookJob < ApplicationJob
         insecure_ssl: Rails.env.production? ? '0' : '1'
       },
       {
-        events: %w[push pull_request],
+        events: %w[push],
         active: true
       }
     )

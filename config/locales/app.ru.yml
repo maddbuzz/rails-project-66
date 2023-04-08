@@ -28,7 +28,7 @@ ru:
   api:
 
     hooks:
-      github_webhook:
+      accept_push:
         webhook_check_started: Репозиторий %{repo} обновился, запущена автоматическая проверка
 
   web:
