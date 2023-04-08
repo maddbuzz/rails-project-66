@@ -5,7 +5,7 @@ module Api
     # before_action :set_repository, only: %i[show]
 
     def github_webhook
-      # debugger
+      debugger
       # @repository = ?
       # last_check = @repository.checks.last
       # return unless !last_check || last_check.completed? || last_check.failed?
