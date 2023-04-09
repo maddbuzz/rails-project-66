@@ -5,7 +5,8 @@ require 'test_helper'
 class CheckRepositoryJobTest < ActiveJob::TestCase
   test 'perform javascript-repo check' do
     completed_check = repository_checks(:javascript_app_completed_check)
-    check = repository_checks(:javascript_app_started_check)
+    check = completed_check.repository.checks.new
+    check.save!
 
     assert { check.started? }
 
@@ -20,7 +21,8 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
 
   test 'perform ruby-repo check' do
     completed_check = repository_checks(:ruby_app_completed_check)
-    check = repository_checks(:ruby_app_started_check)
+    check = completed_check.repository.checks.new
+    check.save!
 
     assert { check.started? }
 

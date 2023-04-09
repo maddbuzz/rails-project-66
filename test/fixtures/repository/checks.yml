@@ -2,7 +2,6 @@
 #   model_class: Repository::Check
 
 good_check:
-  id: 1
   repository: repository3
   aasm_state: completed
   check_date: Sun, 02 Apr 2023 11:14:14.854010000 UTC +00:00
@@ -11,18 +10,7 @@ good_check:
   commit_id: 594c26e
   check_results: []
 
-javascript_app_started_check:
-  id: 2
-  repository: javascript_app
-  aasm_state: started
-  check_date:
-  was_the_check_passed: false
-  number_of_violations:
-  commit_id: 
-  check_results:
-
 javascript_app_completed_check:
-  id: 3
   repository: javascript_app
   aasm_state: completed
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
@@ -61,18 +49,7 @@ javascript_app_completed_check:
       line: 1
       column: 24
 
-ruby_app_started_check:
-  id: 4
-  repository: ruby_app
-  aasm_state: started
-  check_date:
-  was_the_check_passed: false
-  number_of_violations:
-  commit_id: 
-  check_results:
-
 ruby_app_completed_check:
-  id: 5
   repository: ruby_app
   aasm_state: completed
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
