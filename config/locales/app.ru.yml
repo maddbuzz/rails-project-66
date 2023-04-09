@@ -55,7 +55,7 @@ ru:
         Result of the last check: Результат последней проверки
         Number of violations: Количество замечаний
       new:
-        title: Выберите репозиторий
+        title: "Выберите репозиторий"
         submit: Добавить выбранный репозиторий
       create:
         Repository has not been added: Репозиторий не был добавлен

@@ -1,4 +1,4 @@
-.mb-4
+.mb-3
   h2
     = title
 
@@ -7,7 +7,7 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :github_repo_id, collection: select_options
+    = f.input :github_repo_id, collection: select_options, label: false
 
   .form-actions
-    = f.button :submit, submit, class: 'btn btn btn-success'
+    = f.button :submit, submit, class: 'btn btn btn-success mt-1'
