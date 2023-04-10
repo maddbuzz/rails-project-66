@@ -1,11 +1,13 @@
+- lines = t('.lines_array')
+
 .mb-4
   h1
 .display-4.fw-bold.mb-0
-  = t('.Hello from Hexlet!')
+  = lines[0]
 p.mb-4
-  = t('.Practical programming courses')
+  = lines[1]
 h2.fw-bold
-  = t('.Repository Quality Analyzer')
+  = lines[2]
 p
-  = t('.project_description')
-= link_to t('.To learn more'), 'https://ru.hexlet.io/programs/rails/projects/66', class: 'btn btn-primary btn-lg px-4 mt-3 fw-bold'
+  = lines[3]
+= link_to lines[4], 'https://ru.hexlet.io/programs/rails/projects/66', class: 'btn btn-primary btn-lg px-4 mt-3 fw-bold'

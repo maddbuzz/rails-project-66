@@ -8,7 +8,6 @@ module Api
       case request.headers['X-GitHub-Event']
       when 'ping'
         accept_ping
-      # TODO: when 'push', nil # for hexlet check only!
       when 'push'
         accept_push repository_params[:id]
       else
@@ -28,7 +27,7 @@ module Api
       check = repository.checks.new
       check.save!
 
-      CheckRepositoryJob.perform_later repository, check
+      CheckRepositoryJob.perform_later check
       render json: { '200': 'Ok' }, status: :ok
     end
 

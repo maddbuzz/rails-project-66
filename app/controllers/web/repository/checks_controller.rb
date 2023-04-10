@@ -22,7 +22,7 @@ module Web
         authorize @check
         @check.save!
 
-        CheckRepositoryJob.perform_later @repository, @check
+        CheckRepositoryJob.perform_later @check
         redirect_to @repository, notice: t('.Check started')
       end
 

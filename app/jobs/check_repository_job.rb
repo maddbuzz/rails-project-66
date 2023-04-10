@@ -5,7 +5,8 @@ TEMP_GIT_CLONES_PATH = 'tmp/git_clones'
 class CheckRepositoryJob < ApplicationJob
   queue_as :default
 
-  def perform(repository, check)
+  def perform(check)
+    repository = check.repository
     check.check_date = Time.current
 
     temp_repo_path = "#{TEMP_GIT_CLONES_PATH}/#{repository.repo_name}/"
@@ -30,8 +31,11 @@ class CheckRepositoryJob < ApplicationJob
 
     check.save!
     check.mark_as_completed!
+    UserMailer.with(check:).repo_check_verification_failed.deliver_later unless check.was_the_check_passed
   rescue StandardError => e
     check.mark_as_failed!
+    UserMailer.with(check:).repo_check_failed.deliver_later
+
     Rails.logger.debug e
     Rollbar.error e
   ensure

@@ -31,6 +31,10 @@ test:
 	bin/rails db:environment:set RAILS_ENV=test
 	NODE_ENV=test bin/rails test
 
+test-coverage:
+	rm -rf coverage
+	COVERAGE=1 make test
+
 test-system:
 	clear || true
 	rm -rf tmp/screenshots/ || true
@@ -40,13 +44,6 @@ test-system:
 
 test-system-headless:
 	MOZ_HEADLESS=1 make test-system
-
-test-all:
-	MOZ_HEADLESS=1 bin/rails test:all
-
-test-all-coverage:
-	rm -rf coverage
-	COVERAGE=1 make test-all
 
 slim-lint:
 	slim-lint app/**/*.slim || true

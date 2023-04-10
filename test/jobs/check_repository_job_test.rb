@@ -10,7 +10,7 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
 
     assert { check.started? }
 
-    CheckRepositoryJob.perform_now check.repository, check
+    CheckRepositoryJob.perform_now check
 
     assert { check.completed? }
 
@@ -26,7 +26,7 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
 
     assert { check.started? }
 
-    CheckRepositoryJob.perform_now check.repository, check
+    CheckRepositoryJob.perform_now check
 
     assert { check.completed? }
 
