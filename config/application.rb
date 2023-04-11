@@ -33,7 +33,7 @@ module RailsProject66
   end
 end
 
-require_relative '../test/test_helper' if Rails.env.test?
+# require_relative '../test/test_helper' if Rails.env.test?
 
 class ApplicationContainer
   extend Dry::Container::Mixin
