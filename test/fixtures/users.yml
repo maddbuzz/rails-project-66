@@ -4,5 +4,5 @@
 user<%= n %>:
   email: <%= "email#{n}@test.com" %>
   nickname: $LABEL
-  token: <%= "token#{n}" %>
+  # token: <%= "token#{n}" %>
 <% end %>
