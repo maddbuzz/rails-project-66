@@ -51,6 +51,7 @@ module Web
       octokit_client = ApplicationContainer[:octokit_client]
       client = octokit_client.new access_token: current_user.token, auto_paginate: true
       github_repo = client.repo(@repository.github_id)
+      return false if github_repo.nil?
 
       @repository.update(
         link: github_repo[:html_url],

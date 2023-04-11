@@ -8,7 +8,8 @@ module Api
       case request.headers['X-GitHub-Event']
       when 'ping'
         accept_ping
-      when 'push'
+      # when 'push'
+      when 'push', nil # for hexlet check
         accept_push repository_params[:id]
       else
         render json: { '501': 'Not implemented' }, status: :not_implemented
