@@ -83,8 +83,8 @@ class OctokitClientStub
     github_repos.each(&:deep_symbolize_keys!)
   end
 
-  def repo(github_repo_id)
-    repos.find { |repo| repo[:id] == github_repo_id }
+  def repo(github_id)
+    repos.find { |repo| repo[:id] == github_id }
   end
 
   def create_hook(*args, **kwargs); end

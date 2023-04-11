@@ -16,7 +16,7 @@ class UserMailer < ApplicationMailer
   def repo_check_or_verification_failed
     @check = params[:check]
     repo = @check.repository
-    @repo_full_name = "#{repo.owner_name}/#{repo.repo_name}"
+    @repo_full_name = repo.full_name
     @user = repo.user
     mail(to: @user.email, subject: t('.subject', repo_full_name: @repo_full_name))
   end

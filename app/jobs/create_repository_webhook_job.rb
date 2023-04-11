@@ -8,13 +8,13 @@ class CreateRepositoryWebhookJob < ApplicationJob
     octokit_client = ApplicationContainer[:octokit_client]
     client = octokit_client.new access_token: user_token, auto_paginate: true
 
-    hooks_array = client.hooks(repository.github_repo_id)
+    hooks_array = client.hooks(repository.github_id)
     Rails.logger.debug { "hooks_array = #{hooks_array}\n" }
 
     # url = 'https://webhook.site/2da4e6ff-56e3-4938-b322-10b8384f5fb4'
     url = Rails.application.routes.url_helpers.api_checks_url
     hook_info = client.create_hook(
-      repository.github_repo_id, # "#{repository.owner_name}/#{repository.repo_name}",
+      repository.github_id, # "#{repository.owner_name}/#{repository.name}",
       'web',
       {
         url:,

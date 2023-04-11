@@ -17,8 +17,8 @@ module Api
 
     private
 
-    def accept_push(github_repo_id)
-      repository = ::Repository.find_by(github_repo_id:)
+    def accept_push(github_id)
+      repository = ::Repository.find_by(github_id:)
       return render json: { '404': 'Not found' }, status: :not_found unless repository
 
       last_check = repository.checks.last

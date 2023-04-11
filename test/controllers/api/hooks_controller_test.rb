@@ -6,20 +6,20 @@ module Api
   class HooksControllerTest < ActionDispatch::IntegrationTest
     setup do
       @repository = repositories(:ruby_app)
-      @github_repo_id = @repository.github_repo_id
+      @github_id = @repository.github_id
     end
 
     test 'should receive push-events and react accordingly' do
       assert_no_enqueued_jobs
       assert_difference('Repository::Check.count', +1) do
-        post api_checks_url, params: { repository: { id: @github_repo_id } }, headers: { 'X-GitHub-Event': 'push' }
+        post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'push' }
         assert { @repository.checks.last.started? }
         assert_enqueued_with job: CheckRepositoryJob
         assert_response :ok
       end
 
       assert_no_difference('Repository::Check.count') do
-        post api_checks_url, params: { repository: { id: @github_repo_id } }, headers: { 'X-GitHub-Event': 'push' }
+        post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'push' }
         assert_response :conflict
       end
 
@@ -31,7 +31,7 @@ module Api
 
     test 'should receive ping-events and react accordingly' do
       assert_no_difference('Repository::Check.count') do
-        post api_checks_url, params: { repository: { id: @github_repo_id } }, headers: { 'X-GitHub-Event': 'ping' }
+        post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'ping' }
         assert_response :ok
       end
       assert_no_enqueued_jobs
@@ -39,7 +39,7 @@ module Api
 
     test 'should receive over events and react accordingly' do
       assert_no_difference('Repository::Check.count') do
-        post api_checks_url, params: { repository: { id: @github_repo_id } }, headers: { 'X-GitHub-Event': 'pull_request' }
+        post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'pull_request' }
         assert_response :not_implemented
       end
       assert_no_enqueued_jobs

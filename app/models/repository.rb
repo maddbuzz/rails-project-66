@@ -6,7 +6,7 @@ class Repository < ApplicationRecord
 
   scope :by_owner, ->(owner_user) { where(user_id: owner_user.id) }
 
-  validates :github_repo_id, uniqueness: true, presence: true, numericality: { only_integer: true }
+  validates :github_id, uniqueness: true, presence: true, numericality: { only_integer: true }
 
   extend Enumerize
   enumerize :language, in: %i[JavaScript Ruby]

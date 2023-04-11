@@ -46,16 +46,17 @@ module Web
     end
 
     def repository_update
-      return false if @repository.github_repo_id.nil?
+      return false if @repository.github_id.nil?
 
       octokit_client = ApplicationContainer[:octokit_client]
       client = octokit_client.new access_token: current_user.token, auto_paginate: true
-      github_repo = client.repo(@repository.github_repo_id)
+      github_repo = client.repo(@repository.github_id)
 
       @repository.update(
         link: github_repo[:html_url],
         owner_name: github_repo[:owner][:login],
-        repo_name: github_repo[:name],
+        name: github_repo[:name],
+        full_name: github_repo[:full_name],
         language: github_repo[:language],
         repo_created_at: github_repo[:created_at],
         repo_updated_at: github_repo[:updated_at]
@@ -68,7 +69,7 @@ module Web
     end
 
     def repository_params
-      params.require(:repository).permit(:github_repo_id)
+      params.require(:repository).permit(:github_id)
     end
   end
 end

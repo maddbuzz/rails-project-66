@@ -7,7 +7,7 @@
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
   .form-inputs
-    = f.input :github_repo_id, collection: select_options, label: false
+    = f.input :github_id, collection: select_options, label: false
 
   .form-actions
     = f.button :submit, submit, class: 'btn btn btn-success mt-1'

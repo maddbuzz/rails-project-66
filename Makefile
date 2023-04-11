@@ -7,7 +7,7 @@ without-production:
 	bundle config set --local without 'production'
 
 install-without-production: without-production install
-	gem install slim_lint
+	slim-lint -v || gem install slim_lint
 	cp -n .env.example .env || true
 
 dev-start:

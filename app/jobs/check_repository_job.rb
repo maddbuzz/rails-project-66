@@ -9,7 +9,7 @@ class CheckRepositoryJob < ApplicationJob
     repository = check.repository
     check.check_date = Time.current
 
-    temp_repo_path = "#{TEMP_GIT_CLONES_PATH}/#{repository.repo_name}/"
+    temp_repo_path = "#{TEMP_GIT_CLONES_PATH}/#{repository.name}/"
 
     check.fetch!
     fetch_repo_data = ApplicationContainer[:fetch_repo_data]
@@ -49,7 +49,7 @@ def fetch_repo_data(repository, temp_repo_path)
   _, exit_status = run_programm "git clone #{repository.link}.git #{temp_repo_path}"
   raise StandardError unless exit_status.zero?
 
-  last_commit = HTTParty.get("https://api.github.com/repos/#{repository.owner_name}/#{repository.repo_name}/commits").first
+  last_commit = HTTParty.get("https://api.github.com/repos/#{repository.owner_name}/#{repository.name}/commits").first
   last_commit['sha'][...7]
 end
 
