@@ -33,6 +33,8 @@ module RailsProject66
   end
 end
 
+require_relative '../test/test_helper' if Rails.env.test?
+
 class ApplicationContainer
   extend Dry::Container::Mixin
 
@@ -45,28 +47,4 @@ class ApplicationContainer
     register :fetch_repo_data, ->(repository, temp_repo_path) { fetch_repo_data(repository, temp_repo_path) }
     register :lint_check, ->(temp_repo_path, language_class) { lint_check(temp_repo_path, language_class) }
   end
-end
-
-class OctokitClientStub
-  def initialize(*args); end
-
-  def repos
-    github_repos = JSON.load_file File.open(GITHUB_REPOS_JSON_PATH) # array of "github" repos
-    github_repos.each(&:deep_symbolize_keys!)
-  end
-
-  def repo(github_id)
-    repos.find { |repo| repo[:id] == github_id }
-  end
-
-  def create_hook(*args, **kwargs); end
-end
-
-def fetch_repo_data_stub(_repository, _temp_repo_path)
-  '5702e5b' # commit_id
-end
-
-def lint_check_stub(_temp_repo_path, language_class)
-  language = language_class.to_s.split('::').last
-  File.read(LINTERS_RESULT_MAP[language]) # json_string
 end
