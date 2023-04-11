@@ -3,16 +3,16 @@
 
 good_check:
   repository: repository3
-  aasm_state: completed
+  aasm_state: finished
   check_date: Sun, 02 Apr 2023 11:14:14.854010000 UTC +00:00
   passed: true
   number_of_violations: 0
   commit_id: 594c26e
   check_results: []
 
-javascript_app_completed_check:
+javascript_app_finished_check:
   repository: javascript_app
-  aasm_state: completed
+  aasm_state: finished
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
   passed: false
   number_of_violations: 6
@@ -49,9 +49,9 @@ javascript_app_completed_check:
       line: 1
       column: 24
 
-ruby_app_completed_check:
+ruby_app_finished_check:
   repository: ruby_app
-  aasm_state: completed
+  aasm_state: finished
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
   passed: false
   number_of_violations: 3

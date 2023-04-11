@@ -10,12 +10,12 @@ module Web
       end
 
       test 'should get show' do
-        check = repository_checks(:javascript_app_completed_check)
+        check = repository_checks(:javascript_app_finished_check)
         get repository_check_path(check.repository.id, check.id)
         assert_response :success
       end
 
-      test 'should create a new check and prevent another one from being created until the first one has completed' do
+      test 'should create a new check and prevent another one from being created until the first one has finished' do
         repository = repositories(:repository3)
 
         post repository_checks_path(repository)

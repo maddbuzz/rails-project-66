@@ -9,7 +9,7 @@ ru:
     fetched: Репозиторий загружен
     checking: Проверяется репозиторий
     checked: Репозиторий проверен
-    completed: Завершена
+    finished: Завершена
     failed: Завершена с ошибкой
 
   layouts:

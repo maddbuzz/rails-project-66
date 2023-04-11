@@ -22,7 +22,7 @@ module Api
       return render json: { '404': 'Not found' }, status: :not_found unless repository
 
       last_check = repository.checks.last
-      return render json: { '409': 'Conflict' }, status: :conflict unless !last_check || last_check.completed? || last_check.failed?
+      return render json: { '409': 'Conflict' }, status: :conflict unless !last_check || last_check.finished? || last_check.failed?
 
       check = repository.checks.new
       check.save!

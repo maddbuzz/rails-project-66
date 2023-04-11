@@ -1,19 +1,32 @@
-AllCops:
-  Exclude:
-    - "db/**"
-    - bin/bundle
-    - "**/vendor/**/*"
-    - "**/*.gemspec"
-    - "spec/**"
-  NewCops: enable
-  TargetRubyVersion: 3.1.2
-  SuggestExtensions: false
+---
 
 require:
+  - rubocop-performance
   - rubocop-rails
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.1.2
+  TargetRailsVersion: 7
+  Exclude:
+    - 'code/bin/**'
+    - 'code/db/schema.rb'
+    - 'code/db/migrate/**'
+    - 'code/vendor/**/*'
+    - 'code/node_modules/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'code/tmp/**/*'
+  SuggestExtensions: false
 
 Rails:
   Enabled: true
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
 
 Layout/LineLength:
   Enabled: false
@@ -21,14 +34,17 @@ Layout/LineLength:
 Metrics/AbcSize:
   Enabled: false
 
-Metrics/BlockLength:
+Metrics/MethodLength:
   Enabled: false
 
-Metrics/MethodLength:
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
   Enabled: false
 
 Style/AsciiComments:
   Enabled: false
 
-Style/Documentation:
+Metrics/ParameterLists:
   Enabled: false

@@ -14,7 +14,7 @@ class Repository
       state :checked
       state :parsing
       state :parsed
-      state :completed
+      state :finished
       state :failed
 
       event :fetch do
@@ -41,8 +41,8 @@ class Repository
         transitions from: :parsing, to: :parsed
       end
 
-      event :mark_as_completed do
-        transitions from: :parsed, to: :completed
+      event :mark_as_finished do
+        transitions from: :parsed, to: :finished
       end
 
       event :mark_as_failed do

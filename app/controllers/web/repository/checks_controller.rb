@@ -13,7 +13,7 @@ module Web
 
       def create
         last_check = @repository.checks.last
-        unless !last_check || last_check.completed? || last_check.failed?
+        unless !last_check || last_check.finished? || last_check.failed?
           redirect_to @repository, alert: t('.Wait for the previous check to complete')
           return
         end

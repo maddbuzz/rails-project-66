@@ -85,11 +85,9 @@ group :production do
   gem 'pg'
 end
 
-group :development, :production do
-  gem 'rubocop-rails', require: false
-end
-
 gem 'rollbar'
+gem 'rubocop-performance', require: false
+gem 'rubocop-rails', require: false
 gem 'simple_form'
 gem 'slim-rails'
 # gem 'omniauth'

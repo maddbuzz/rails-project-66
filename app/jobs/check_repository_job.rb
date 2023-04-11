@@ -30,7 +30,7 @@ class CheckRepositoryJob < ApplicationJob
     check.mark_as_parsed!
 
     check.save!
-    check.mark_as_completed!
+    check.mark_as_finished!
     UserMailer.with(check:).repo_check_verification_failed.deliver_later unless check.passed
   rescue StandardError => e
     check.mark_as_failed!
