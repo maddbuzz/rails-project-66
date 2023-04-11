@@ -47,9 +47,26 @@ class ApplicationContainer
   end
 end
 
-# # Получение зависимостей из контейнера:
-# octokit_client = ApplicationContainer[:octokit_client]
-# client = octokit_client.new access_token: current_user.token, auto_paginate: true
-# # Вызов зависимости с параметрами:
-# fetch_repo_data = ApplicationContainer[:fetch_repo_data]
-# check.commit_id = fetch_repo_data.call(repository, temp_repo_path)
+class OctokitClientStub
+  def initialize(*args); end
+
+  def repos
+    github_repos = JSON.load_file File.open(GITHUB_REPOS_JSON_PATH) # array of "github" repos
+    github_repos.each(&:deep_symbolize_keys!)
+  end
+
+  def repo(github_id)
+    repos.find { |repo| repo[:id] == github_id }
+  end
+
+  def create_hook(*args, **kwargs); end
+end
+
+def fetch_repo_data_stub(_repository, _temp_repo_path)
+  '5702e5b' # commit_id
+end
+
+def lint_check_stub(_temp_repo_path, language_class)
+  language = language_class.to_s.split('::').last
+  File.read(LINTERS_RESULT_MAP[language]) # json_string
+end

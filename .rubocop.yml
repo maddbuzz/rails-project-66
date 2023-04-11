@@ -9,14 +9,12 @@ AllCops:
   TargetRubyVersion: 3.1.2
   TargetRailsVersion: 7
   Exclude:
-    - 'code/bin/**'
-    - 'code/db/schema.rb'
-    - 'code/db/migrate/**'
-    - 'code/vendor/**/*'
-    - 'code/node_modules/**/*'
+    - 'bin/**'
+    - 'db/schema.rb'
+    - 'db/migrate/**'
     - 'vendor/**/*'
     - 'node_modules/**/*'
-    - 'code/tmp/**/*'
+    - 'tmp/**/*'
   SuggestExtensions: false
 
 Rails:
