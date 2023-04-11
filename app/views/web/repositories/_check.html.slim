@@ -7,6 +7,6 @@ tr
     - if check.commit_id
       = link_to check.commit_id, "#{check.repository.link}/commit/#{check.commit_id}"
   td[scope="row"]
-    = check.was_the_check_passed
+    = check.passed
   td[scope="row"]
     = check.check_date

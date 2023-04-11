@@ -26,12 +26,12 @@ class CheckRepositoryJob < ApplicationJob
     check.parse!
     check.check_results, number_of_violations = parse_check(temp_repo_path, language_class, json_string)
     check.number_of_violations = number_of_violations
-    check.was_the_check_passed = number_of_violations.zero?
+    check.passed = number_of_violations.zero?
     check.mark_as_parsed!
 
     check.save!
     check.mark_as_completed!
-    UserMailer.with(check:).repo_check_verification_failed.deliver_later unless check.was_the_check_passed
+    UserMailer.with(check:).repo_check_verification_failed.deliver_later unless check.passed
   rescue StandardError => e
     check.mark_as_failed!
     UserMailer.with(check:).repo_check_failed.deliver_later

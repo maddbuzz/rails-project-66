@@ -5,7 +5,7 @@ good_check:
   repository: repository3
   aasm_state: completed
   check_date: Sun, 02 Apr 2023 11:14:14.854010000 UTC +00:00
-  was_the_check_passed: true
+  passed: true
   number_of_violations: 0
   commit_id: 594c26e
   check_results: []
@@ -14,7 +14,7 @@ javascript_app_completed_check:
   repository: javascript_app
   aasm_state: completed
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
-  was_the_check_passed: false
+  passed: false
   number_of_violations: 6
   commit_id: 5702e5b
   check_results:
@@ -53,7 +53,7 @@ ruby_app_completed_check:
   repository: ruby_app
   aasm_state: completed
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
-  was_the_check_passed: false
+  passed: false
   number_of_violations: 3
   commit_id: 5702e5b
   check_results:

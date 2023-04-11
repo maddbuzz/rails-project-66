@@ -14,7 +14,7 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
 
     assert { check.completed? }
 
-    assert { check.was_the_check_passed == completed_check.was_the_check_passed }
+    assert { check.passed == completed_check.passed }
     assert { check.number_of_violations == completed_check.number_of_violations }
     assert { check.check_results == completed_check.check_results }
   end
@@ -30,7 +30,7 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
 
     assert { check.completed? }
 
-    assert { check.was_the_check_passed == completed_check.was_the_check_passed }
+    assert { check.passed == completed_check.passed }
     assert { check.number_of_violations == completed_check.number_of_violations }
     assert { check.check_results == completed_check.check_results }
   end

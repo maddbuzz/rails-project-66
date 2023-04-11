@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_11_021623) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_11_030737) do
   create_table "repositories", force: :cascade do |t|
     t.integer "github_id"
     t.string "link"
@@ -30,7 +30,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_11_021623) do
   create_table "repository_checks", force: :cascade do |t|
     t.string "aasm_state"
     t.datetime "check_date", precision: nil
-    t.boolean "was_the_check_passed", default: false
+    t.boolean "passed", default: false
     t.integer "number_of_violations"
     t.string "commit_id"
     t.json "check_results"
