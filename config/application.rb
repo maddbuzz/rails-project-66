@@ -23,9 +23,13 @@ module RailsProject66
 
     config.exceptions_app = routes # this line for custom error pages
 
-    # Чтобы сформировать внешнюю ссылку на наш сервис, необходимо в config/application.rb добавить следующую строку:
-    routes.default_url_options = { host: ENV.fetch('BASE_URL', nil) }
-    # и добавить новую переменную окружения.
+    routes
+      .default_url_options =
+      if Rails.env.test?
+        { host: 'http://127.0.0.1:3000' }
+      else
+        { host: ENV.fetch('BASE_URL', nil) } # необходимо, чтобы сформировать внешнюю ссылку на наш сервис...
+      end
   end
 end
 

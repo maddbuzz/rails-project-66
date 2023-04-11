@@ -68,13 +68,12 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
-  # gem 'faker'
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'capybara'
+  gem 'faker'
   gem 'minitest-power_assert'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
