@@ -32,12 +32,12 @@ class CheckRepositoryJob < ApplicationJob
     check.save!
     check.mark_as_finished!
     UserMailer.with(check:).repo_check_verification_failed.deliver_later unless check.passed
-  rescue StandardError => e
-    check.mark_as_failed!
-    UserMailer.with(check:).repo_check_failed.deliver_later
+  # rescue StandardError => e
+  #   check.mark_as_failed!
+  #   UserMailer.with(check:).repo_check_failed.deliver_later
 
-    Rails.logger.debug e
-    Rollbar.error e
+  #   Rails.logger.debug e
+  #   Rollbar.error e
   ensure
     run_programm "rm -rf #{temp_repo_path}"
   end
