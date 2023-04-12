@@ -16,7 +16,7 @@ class CheckRepositoryJob < ApplicationJob
     check.commit_id = fetch_repo_data.call(repository, temp_repo_path)
     check.mark_as_fetched!
 
-    language_class = LintersAndParsers.const_get(repository.language)
+    language_class = LintersAndParsers.const_get(repository.language.upcase_first)
 
     check.check!
     lint_check = ApplicationContainer[:lint_check]

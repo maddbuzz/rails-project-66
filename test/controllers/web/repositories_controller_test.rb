@@ -17,9 +17,6 @@ module Web
     end
 
     test 'should get new (select from the list)' do
-      # stub_request(:get, "#{GITHUB_API_PATH}user/repos")
-      #   .to_return(body: file_fixture(REPOS_JSON_FILE_NAME), status: 200, headers: { content_type: 'application/json' })
-
       get new_repository_url
       assert_response :success
     end

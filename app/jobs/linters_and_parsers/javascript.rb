@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module LintersAndParsers
-  class JavaScript
+  class Javascript
     def self.linter(temp_repo_path)
       run_programm "find #{temp_repo_path} -name '*eslint*.*' -type f -delete"
       stdout, _exit_status = run_programm "yarn run eslint --format json #{temp_repo_path}"

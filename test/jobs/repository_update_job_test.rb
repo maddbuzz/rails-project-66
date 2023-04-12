@@ -19,7 +19,7 @@ class RepositoryUpdateJobTest < ActiveJob::TestCase
     assert { repository.link == github_repo[:html_url] }
     assert { repository.owner_name == github_repo[:owner][:login] } # need deep_symbolize_keys!, not just symbolize_keys!
     assert { repository.name == github_repo[:name] }
-    assert { repository.language == github_repo[:language] }
+    assert { repository.language == github_repo[:language].downcase }
     assert { repository.repo_created_at == github_repo[:created_at] }
     assert { repository.repo_updated_at == github_repo[:updated_at] }
   end

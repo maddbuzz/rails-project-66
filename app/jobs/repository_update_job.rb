@@ -16,7 +16,7 @@ class RepositoryUpdateJob < ApplicationJob
       owner_name: github_repo[:owner][:login],
       name: github_repo[:name],
       full_name: github_repo[:full_name],
-      language: github_repo[:language],
+      language: github_repo[:language].downcase,
       repo_created_at: github_repo[:created_at],
       repo_updated_at: github_repo[:updated_at]
     )

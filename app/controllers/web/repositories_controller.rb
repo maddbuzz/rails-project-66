@@ -20,7 +20,7 @@ module Web
 
       languages = ::Repository.language.values
       @select_options = user_repos_list
-                        .filter { |repo| languages.include?(repo[:language]) }
+                        .filter { |repo| languages.include?(repo[:language]&.downcase) }
                         .map { |repo| [repo[:full_name], repo[:id]] }
     end
 

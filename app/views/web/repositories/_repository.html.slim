@@ -1,9 +1,10 @@
 tr
   td
-    = link_to repository.name, repository_path(repository)
+    = link_to repository_path(repository) do
+      = repository.name || '-'
   td
     = repository.language
   td
-    = repository.checks.last&.passed
+    = repository.checks.count.zero? ? t('.no_checks_yet') : repository.checks.last&.passed
   td
     = repository.checks.last&.number_of_violations

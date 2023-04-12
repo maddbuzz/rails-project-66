@@ -9,5 +9,5 @@ class Repository < ApplicationRecord
   validates :github_id, uniqueness: true, presence: true, numericality: { only_integer: true }
 
   extend Enumerize
-  enumerize :language, in: %i[JavaScript Ruby]
+  enumerize :language, in: %i[javascript ruby]
 end
