@@ -27,14 +27,14 @@ module Web
     test 'should create (add) selected repository' do
       github_id = 1
       assert { !::Repository.exists?(github_id:) }
-      repository_last_id = ::Repository.last.id
 
-      post repositories_path, params: { repository: { github_id: '' } }
-      assert_redirected_to new_repository_path
-      assert_flash 'web.repositories.create.Repository has not been added', :alert
+      # post repositories_path, params: { repository: { github_id: '' } }
+      # assert_redirected_to new_repository_path
+      # assert_flash 'web.repositories.create.Repository has not been added', :alert
 
       post repositories_path, params: { repository: { github_id: } }
 
+      assert_enqueued_with job: RepositoryUpdateJob
       assert_enqueued_with job: CreateRepositoryWebhookJob
 
       assert_redirected_to repositories_path
@@ -42,19 +42,7 @@ module Web
 
       last_repository = ::Repository.last
       assert { last_repository.github_id == github_id }
-      assert { last_repository.id > repository_last_id }
       assert { last_repository.user == current_user }
-
-      octokit_client = ApplicationContainer[:octokit_client]
-      client = octokit_client.new access_token: current_user.token, auto_paginate: true
-      github_repo = client.repo(github_id)
-      github_repo.deep_symbolize_keys!
-      assert { last_repository.link == github_repo[:html_url] }
-      assert { last_repository.owner_name == github_repo[:owner][:login] } # need deep_symbolize_keys!, not just symbolize_keys!
-      assert { last_repository.name == github_repo[:name] }
-      assert { last_repository.language == github_repo[:language] }
-      assert { last_repository.repo_created_at == github_repo[:created_at] }
-      assert { last_repository.repo_updated_at == github_repo[:updated_at] }
     end
 
     test 'should show repository' do

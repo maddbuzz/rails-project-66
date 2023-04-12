@@ -1,4 +1,6 @@
 - full_name = @repository.full_name
+- repo_created_at = @repository.repo_created_at
+- repo_updated_at = @repository.repo_updated_at
 
 .mb-4
   h1
@@ -15,11 +17,11 @@ p
 p
   strong.me-2
     = t('.Date of creation')
-  = l @repository.repo_created_at
+  = repo_created_at && l(repo_created_at)
 p
   strong.me-2
     = t('.Update date')
-  = l @repository.repo_updated_at
+  = repo_updated_at && l(repo_updated_at)
 hr
 table.table.table-striped
   thead

@@ -26,15 +26,20 @@ module Web
 
     def create
       @repository = current_user.repositories.find_or_initialize_by(repository_params)
+      @repository.save!
       authorize @repository
 
-      if repository_update
-        CreateRepositoryWebhookJob.perform_later(@repository)
-        redirect_to repositories_url, notice: t('.Repository has been added')
-      else
-        # render :new, status: :unprocessable_entity
-        redirect_to new_repository_path, alert: t('.Repository has not been added')
-      end
+      RepositoryUpdateJob.perform_later(@repository, current_user.token)
+      CreateRepositoryWebhookJob.perform_later(@repository)
+      redirect_to repositories_url, notice: t('.Repository has been added')
+
+      # if repository_update
+      #   CreateRepositoryWebhookJob.perform_later(@repository)
+      #   redirect_to repositories_url, notice: t('.Repository has been added')
+      # else
+      #   # render :new, status: :unprocessable_entity
+      #   redirect_to new_repository_path, alert: t('.Repository has not been added')
+      # end
     end
 
     private
@@ -43,25 +48,6 @@ module Web
       octokit_client = ApplicationContainer[:octokit_client]
       client = octokit_client.new access_token: current_user.token, auto_paginate: true
       client.repos # получение списка репозиториев
-    end
-
-    def repository_update
-      return false if @repository.github_id.nil?
-
-      octokit_client = ApplicationContainer[:octokit_client]
-      client = octokit_client.new access_token: current_user.token, auto_paginate: true
-      github_repo = client.repo(@repository.github_id)
-      return false if github_repo.nil?
-
-      @repository.update(
-        link: github_repo[:html_url],
-        owner_name: github_repo[:owner][:login],
-        name: github_repo[:name],
-        full_name: github_repo[:full_name],
-        language: github_repo[:language],
-        repo_created_at: github_repo[:created_at],
-        repo_updated_at: github_repo[:updated_at]
-      )
     end
 
     def set_repository

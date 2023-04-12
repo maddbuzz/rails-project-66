@@ -8,11 +8,6 @@ require_relative '../config/environment'
 require 'rails/test_help'
 require 'webmock/minitest'
 
-GITHUB_REPOS_JSON_PATH = 'test/fixtures/files/github_repos.json'
-ESLINTER_JSON_PATH = 'test/fixtures/files/eslinter.json'
-RUBOCOP_JSON_PATH = 'test/fixtures/files/rubocop.json'
-LINTERS_RESULT_MAP = { 'JavaScript' => ESLINTER_JSON_PATH, 'Ruby' => RUBOCOP_JSON_PATH }.freeze
-
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers

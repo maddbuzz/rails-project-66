@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+GITHUB_REPOS_JSON_PATH = 'test/fixtures/files/github_repos.json'
+
 module Stubs
   class OctokitClient
     def initialize(*args); end

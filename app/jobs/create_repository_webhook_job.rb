@@ -14,7 +14,7 @@ class CreateRepositoryWebhookJob < ApplicationJob
     # url = 'https://webhook.site/2da4e6ff-56e3-4938-b322-10b8384f5fb4'
     url = Rails.application.routes.url_helpers.api_checks_url
     hook_info = client.create_hook(
-      repository.github_id, # "#{repository.owner_name}/#{repository.name}",
+      repository.github_id,
       'web',
       {
         url:,
