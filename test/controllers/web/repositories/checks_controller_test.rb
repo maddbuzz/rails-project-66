@@ -3,7 +3,7 @@
 require 'test_helper'
 
 module Web
-  module Repository
+  module Repositories
     class ChecksControllerTest < ActionDispatch::IntegrationTest
       setup do
         sign_in users(:user1)
@@ -20,14 +20,14 @@ module Web
 
         post repository_checks_path(repository)
         assert_redirected_to repository
-        assert_flash 'web.repository.checks.create.Check started'
+        assert_flash 'web.repositories.checks.create.Check created'
 
         # .perform_later jobs are not actually run in tests, but we can check for their queuing:
         assert_enqueued_with job: CheckRepositoryJob
 
         post repository_checks_path(repository)
         assert_redirected_to repository
-        assert_flash 'web.repository.checks.create.Wait for the previous check to complete', :alert
+        assert_flash 'web.repositories.checks.create.Wait for the previous check to complete', :alert
       end
     end
   end

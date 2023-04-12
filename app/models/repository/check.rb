@@ -7,7 +7,7 @@ class Repository
     include AASM
 
     aasm do
-      state :started, initial: true
+      state :created, initial: true
       state :fetching
       state :fetched
       state :checking
@@ -18,7 +18,7 @@ class Repository
       state :failed
 
       event :fetch do
-        transitions from: :started, to: :fetching
+        transitions from: :created, to: :fetching
       end
 
       event :mark_as_fetched do

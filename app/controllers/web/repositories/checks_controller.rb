@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module Web
-  module Repository
-    class ChecksController < Web::Repository::ApplicationController
+  module Repositories
+    class ChecksController < Web::Repositories::ApplicationController
       before_action :authenticate_user!
       before_action :set_repository, only: %i[show create]
 
@@ -23,7 +23,7 @@ module Web
         @check.save!
 
         CheckRepositoryJob.perform_later @check
-        redirect_to @repository, notice: t('.Check started')
+        redirect_to @repository, notice: t('.Check created')
       end
 
       private

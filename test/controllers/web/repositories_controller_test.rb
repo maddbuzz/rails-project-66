@@ -29,11 +29,6 @@ module Web
       assert { !::Repository.exists?(github_id:) }
       repository_last_id = ::Repository.last.id
 
-      github_repos = JSON.load_file file_fixture(REPOS_JSON_FILE_NAME) # array of "github" repos
-      github_repo = github_repos.find { |repo| repo['id'] == github_id }
-      # stub_request(:get, "#{GITHUB_API_PATH}repositories/#{github_id}")
-      #   .to_return(body: github_repo.to_json, status: 200, headers: { content_type: 'application/json' })
-
       post repositories_path, params: { repository: { github_id: '' } }
       assert_redirected_to new_repository_path
       assert_flash 'web.repositories.create.Repository has not been added', :alert
@@ -50,6 +45,9 @@ module Web
       assert { last_repository.id > repository_last_id }
       assert { last_repository.user == current_user }
 
+      octokit_client = ApplicationContainer[:octokit_client]
+      client = octokit_client.new access_token: current_user.token, auto_paginate: true
+      github_repo = client.repo(github_id)
       github_repo.deep_symbolize_keys!
       assert { last_repository.link == github_repo[:html_url] }
       assert { last_repository.owner_name == github_repo[:owner][:login] } # need deep_symbolize_keys!, not just symbolize_keys!

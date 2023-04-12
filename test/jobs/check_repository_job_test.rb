@@ -8,7 +8,7 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
     check = finished_check.repository.checks.new
     check.save!
 
-    assert { check.started? }
+    assert { check.created? }
 
     CheckRepositoryJob.perform_now check
 
@@ -24,7 +24,7 @@ class CheckRepositoryJobTest < ActiveJob::TestCase
     check = finished_check.repository.checks.new
     check.save!
 
-    assert { check.started? }
+    assert { check.created? }
 
     CheckRepositoryJob.perform_now check
 

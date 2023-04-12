@@ -13,7 +13,7 @@ module Api
       assert_no_enqueued_jobs
       assert_difference('Repository::Check.count', +1) do
         post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'push' }
-        assert { @repository.checks.last.started? }
+        assert { @repository.checks.last.created? }
         assert_enqueued_with job: CheckRepositoryJob
         assert_response :ok
       end
