@@ -47,6 +47,9 @@ ru:
     repositories:
       repository:
         no_checks_yet: Проверок еще не было
+        verification_not_completed_yet: Проверка еще не завершена
+      check:
+        verification_not_completed_yet: Проверка еще не завершена
       index:
         new: Добавить
         name: Название

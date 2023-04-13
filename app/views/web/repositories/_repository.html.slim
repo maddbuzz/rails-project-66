@@ -1,10 +1,16 @@
+- last_check = repository.checks.last
+
 tr
   td
-    = link_to repository_path(repository) do
-      = repository.name || '-'
+    = link_to repository.name || '-', repository
   td
     = repository.language
   td
-    = repository.checks.count.zero? ? t('.no_checks_yet') : repository.checks.last&.passed
+    - if last_check.nil?
+      = t('.no_checks_yet')
+    - elsif last_check.finished? || last_check.failed?
+      = last_check.passed
+    - else
+      = t('.verification_not_completed_yet')
   td
-    = repository.checks.last&.number_of_violations
+    = last_check&.number_of_violations

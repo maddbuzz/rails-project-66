@@ -7,6 +7,9 @@ tr
     - if check.commit_id
       = link_to check.commit_id, "#{check.repository.link}/commit/#{check.commit_id}"
   td[scope="row"]
-    = check.passed
+    - if check.finished? || check.failed?
+      = check.passed
+    - else
+      = t('.verification_not_completed_yet')
   td[scope="row"]
     = check.check_date
