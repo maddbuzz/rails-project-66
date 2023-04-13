@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_12_125503) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_11_062607) do
   create_table "repositories", force: :cascade do |t|
     t.integer "github_id"
     t.string "link"
