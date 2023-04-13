@@ -1,0 +1,42 @@
+[
+  {
+    "filePath": "/home/buzz/rails-project-66/tmp/git_clones/hexlet-ci-app/config/admin.js",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": [
+      {
+        "ruleId": "lines-around-directive",
+        "replacedBy": [
+          "padding-line-between-statements"
+        ]
+      },
+      {
+        "ruleId": "no-spaced-func",
+        "replacedBy": [
+          "func-call-spacing"
+        ]
+      },
+      {
+        "ruleId": "global-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-buffer-constructor",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-new-require",
+        "replacedBy": []
+      },
+      {
+        "ruleId": "no-path-concat",
+        "replacedBy": []
+      }
+    ]
+  }
+]

@@ -1,7 +1,7 @@
 # _fixture:
 #   model_class: Repository::Check
 
-good_check:
+javascript_good_check:
   repository: repository3
   aasm_state: finished
   check_date: Sun, 02 Apr 2023 11:14:14.854010000 UTC +00:00
@@ -10,7 +10,7 @@ good_check:
   commit_id: 594c26e
   check_results: []
 
-javascript_app_finished_check:
+javascript_bad_check:
   repository: javascript_app
   aasm_state: finished
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00
@@ -49,7 +49,7 @@ javascript_app_finished_check:
       line: 1
       column: 24
 
-ruby_app_finished_check:
+ruby_bad_check:
   repository: ruby_app
   aasm_state: finished
   check_date: Tue, 04 Apr 2023 05:24:23.202327000 UTC +00:00

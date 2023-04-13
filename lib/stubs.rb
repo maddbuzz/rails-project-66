@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ESLINTER_JSON_PATH = 'test/fixtures/files/eslinter.json'
+ESLINTER_JSON_PATH = 'test/fixtures/files/eslinter good.json'
 RUBOCOP_JSON_PATH = 'test/fixtures/files/rubocop.json'
 LINTERS_RESULT_MAP = { 'Javascript' => ESLINTER_JSON_PATH, 'Ruby' => RUBOCOP_JSON_PATH }.freeze
 
