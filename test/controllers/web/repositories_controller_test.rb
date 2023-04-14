@@ -23,11 +23,11 @@ module Web
 
     test 'should create (add) selected repository' do
       github_id = 1
-      assert { !::Repository.exists?(github_id:) }
+      assert { !Repository.exists?(github_id:) }
 
-      # post repositories_path, params: { repository: { github_id: '' } }
-      # assert_redirected_to new_repository_path
-      # assert_flash 'web.repositories.create.Repository has not been added', :alert
+      post repositories_path, params: { repository: { github_id: '' } }
+      assert_redirected_to new_repository_path
+      assert_flash 'web.repositories.create.repository_has_not_been_added', :alert
 
       post repositories_path, params: { repository: { github_id: } }
 
@@ -35,9 +35,9 @@ module Web
       assert_enqueued_with job: CreateRepositoryWebhookJob
 
       assert_redirected_to repositories_path
-      assert_flash 'web.repositories.create.Repository has been added'
+      assert_flash 'web.repositories.create.repository_has_been_added'
 
-      last_repository = ::Repository.last
+      last_repository = Repository.last
       assert { last_repository.github_id == github_id }
       assert { last_repository.user == current_user }
     end

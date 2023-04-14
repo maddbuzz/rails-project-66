@@ -7,29 +7,26 @@ module Web
       before_action :set_repository, only: %i[show create]
 
       def show
-        @check = ::Repository::Check.find(params[:id])
+        @check = Repository::Check.find(params[:id])
         authorize @check
       end
 
       def create
         last_check = @repository.checks.last
-        unless !last_check || last_check.finished? || last_check.failed?
-          redirect_to @repository, alert: t('.Wait for the previous check to complete')
-          return
-        end
+        redirect_to @repository, alert: t('.wait_for_the_previous_check_to_complete') and return if last_check&.pending?
 
         @check = @repository.checks.new
         authorize @check
         @check.save!
 
         CheckRepositoryJob.perform_later @check
-        redirect_to @repository, notice: t('.Check created')
+        redirect_to @repository, notice: t('.check_created')
       end
 
       private
 
       def set_repository
-        @repository = ::Repository.find(params[:repository_id])
+        @repository = Repository.find(params[:repository_id])
         authorize @repository
       end
     end

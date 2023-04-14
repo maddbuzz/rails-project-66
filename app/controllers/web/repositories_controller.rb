@@ -1,45 +1,40 @@
 # frozen_string_literal: true
 
+SUPPORTED_LANGUAGES = Repository.language.values
+
 module Web
   class RepositoriesController < Web::ApplicationController
     before_action :authenticate_user!, only: %i[index show new create]
-    before_action :set_repository, only: %i[show]
 
     def index
-      authorize ::Repository
-      @repositories = ::Repository.by_owner(current_user)
+      authorize Repository
+      @repositories = current_user.repositories
     end
 
     def show
+      set_repository
       @checks = @repository.checks.order(created_at: :desc)
     end
 
     def new
-      @repository = ::Repository.new
+      @repository = Repository.new
       authorize @repository
 
-      languages = ::Repository.language.values
-      @select_options = user_repos_list
-                        .filter { |repo| languages.include?(repo[:language]&.downcase) }
-                        .map { |repo| [repo[:full_name], repo[:id]] }
+      filtered_repos = filter_supported_repos(user_repos_list)
+      @supported_repos_for_select = filtered_repos.map { |repo| [repo[:full_name], repo[:id]] }
     end
 
     def create
       @repository = current_user.repositories.find_or_initialize_by(repository_params)
-      @repository.save!
-      authorize @repository
 
-      RepositoryUpdateJob.perform_later(@repository, current_user.token)
-      CreateRepositoryWebhookJob.perform_later(@repository)
-      redirect_to repositories_url, notice: t('.Repository has been added')
-
-      # if repository_update
-      #   CreateRepositoryWebhookJob.perform_later(@repository)
-      #   redirect_to repositories_url, notice: t('.Repository has been added')
-      # else
-      #   # render :new, status: :unprocessable_entity
-      #   redirect_to new_repository_path, alert: t('.Repository has not been added')
-      # end
+      if @repository.save
+        authorize @repository
+        RepositoryUpdateJob.perform_later(@repository, current_user.token)
+        CreateRepositoryWebhookJob.perform_later(@repository)
+        redirect_to repositories_url, notice: t('.repository_has_been_added')
+      else
+        redirect_to new_repository_path, alert: t('.repository_has_not_been_added')
+      end
     end
 
     private
@@ -50,8 +45,12 @@ module Web
       client.repos # получение списка репозиториев
     end
 
+    def filter_supported_repos(repos)
+      repos.filter { |repo| SUPPORTED_LANGUAGES.include?(repo[:language]&.downcase) }
+    end
+
     def set_repository
-      @repository = ::Repository.find(params[:id])
+      @repository = Repository.find(params[:id])
       authorize @repository
     end
 

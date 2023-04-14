@@ -20,14 +20,14 @@ module Web
 
         post repository_checks_path(repository)
         assert_redirected_to repository
-        assert_flash 'web.repositories.checks.create.Check created'
+        assert_flash 'web.repositories.checks.create.check_created'
 
         # .perform_later jobs are not actually run in tests, but we can check for their queuing:
         assert_enqueued_with job: CheckRepositoryJob
 
         post repository_checks_path(repository)
         assert_redirected_to repository
-        assert_flash 'web.repositories.checks.create.Wait for the previous check to complete', :alert
+        assert_flash 'web.repositories.checks.create.wait_for_the_previous_check_to_complete', :alert
       end
     end
   end

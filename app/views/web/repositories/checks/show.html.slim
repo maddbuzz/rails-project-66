@@ -1,13 +1,13 @@
 .mb-4
   h1
-= link_to t('.Go to repository'), repository_path(@repository), class: 'btn btn-primary mb-4'
+= link_to t('.go_to_repository'), repository_path(@repository), class: 'btn btn-primary mb-4'
 h1
   = t('.Check #', count: @check.id)
 table.table
   tbody
     tr
       td
-        = t('.Date of creation')
+        = t('.date_of_creation')
       td
         = @check.check_date
     tr
@@ -17,7 +17,7 @@ table.table
         = t("repo_check_states.#{@check.aasm_state}")
     tr
       td
-        = t('.Check passed?')
+        = t('.check_passed?')
       td
         = @check.passed
     tr
@@ -27,7 +27,7 @@ table.table
         = @check.number_of_violations
     tr
       td
-        = t('.commit ID')
+        = t('.commit_id')
       td
         = link_to @check.commit_id, "#{@repository.link}/commit/#{@check.commit_id}"
 table.table.table-hover.mb-5
@@ -36,7 +36,7 @@ table.table.table-hover.mb-5
       th
         = t('.Message')
       th
-        = t('.Rule ID')
+        = t('.rule_id')
       th
         = t('.Line:Column')
   tbody

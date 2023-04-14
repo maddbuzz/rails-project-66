@@ -6,30 +6,21 @@ class CheckRepositoryJob < ApplicationJob
   queue_as :default
 
   def perform(check)
+    @check = check
     repository = check.repository
+    @temp_repo_path = "#{TEMP_GIT_CLONES_PATH}/#{repository.name}/"
+    @language_class = LintersAndParsers.const_get(repository.language.upcase_first)
+
     check.check_date = Time.current
 
-    temp_repo_path = "#{TEMP_GIT_CLONES_PATH}/#{repository.name}/"
+    perform_fetch
 
-    check.fetch!
-    fetch_repo_data = ApplicationContainer[:fetch_repo_data]
-    check.commit_id = fetch_repo_data.call(repository, temp_repo_path)
-    check.mark_as_fetched!
+    json_string = perform_check
 
-    language_class = LintersAndParsers.const_get(repository.language.upcase_first)
-
-    check.check!
-    lint_check = ApplicationContainer[:lint_check]
-    json_string = lint_check.call(temp_repo_path, language_class)
-    check.mark_as_checked!
-
-    check.parse!
-    check.check_results, number_of_violations = parse_check(temp_repo_path, language_class, json_string)
-    check.number_of_violations = number_of_violations
-    check.passed = number_of_violations.zero?
-    check.mark_as_parsed!
+    perform_parse(json_string)
 
     check.save!
+
     check.mark_as_finished!
     UserMailer.with(check:).repo_check_verification_failed.deliver_later unless check.passed
   rescue StandardError => e
@@ -39,7 +30,32 @@ class CheckRepositoryJob < ApplicationJob
     Rails.logger.debug e
     Rollbar.error e
   ensure
-    run_programm "rm -rf #{temp_repo_path}"
+    run_programm "rm -rf #{@temp_repo_path}"
+  end
+
+  private
+
+  def perform_fetch
+    @check.fetch!
+    fetch_repo_data = ApplicationContainer[:fetch_repo_data]
+    @check.commit_id = fetch_repo_data.call(@check.repository, @temp_repo_path)
+    @check.mark_as_fetched!
+  end
+
+  def perform_check
+    @check.check!
+    lint_check = ApplicationContainer[:lint_check]
+    json_string = lint_check.call(@temp_repo_path, @language_class)
+    @check.mark_as_checked!
+    json_string
+  end
+
+  def perform_parse(json_string)
+    @check.parse!
+    @check.check_results, number_of_violations = parse_check(@temp_repo_path, @language_class, json_string)
+    @check.number_of_violations = number_of_violations
+    @check.passed = number_of_violations.zero?
+    @check.mark_as_parsed!
   end
 end
 

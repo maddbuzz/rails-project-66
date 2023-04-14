@@ -3,10 +3,14 @@
 class Repository
   class CheckPolicy < ApplicationPolicy
     def show?
-      user == record.repository.user
+      owner?
     end
 
     def create?
+      owner?
+    end
+
+    def owner?
       user == record.repository.user
     end
   end

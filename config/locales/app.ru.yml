@@ -54,37 +54,37 @@ ru:
         new: Добавить
         name: Название
         language: Язык
-        Result of the last check: Результат последней проверки
-        Number of violations: Количество замечаний
+        result_of_the_last_check: Результат последней проверки
+        number_of_violations: Количество замечаний
       new:
         title: "Выберите репозиторий"
         submit: Добавить выбранный репозиторий
       create:
-        Repository has not been added: Репозиторий не был добавлен
-        Repository has been added: Репозиторий был добавлен
+        repository_has_not_been_added: Репозиторий не был добавлен
+        repository_has_been_added: Репозиторий был добавлен
       show:
         Check: Проверить
         Name: Название
         Language: Язык
-        Date of creation: Дата создания
-        Update date: Дата обновления
-        Check status: Статус проверки
-        Commit ID: ID коммита
-        Check passed?: Проверка пройдена?
-        Check date: Дата проверки
+        date_of_creation: Дата создания
+        update_date: Дата обновления
+        check_status: Статус проверки
+        commit_id: ID коммита
+        check_passed?: Проверка пройдена?
+        check_date: Дата проверки
 
       checks:
         show:
-          Go to repository: Перейти к репозиторию
+          go_to_repository: Перейти к репозиторию
           "Check #": "Проверка #%{count}"
-          Date of creation: Дата создания
+          date_of_creation: Дата создания
           Status: Статус
-          Check passed?: Проверка пройдена?
+          check_passed?: Проверка пройдена?
           number_of_violations: Количество замечаний
-          commit ID: ID коммита
+          commit_id: ID коммита
           Message: Сообщение
-          Rule ID: Идентификатор правила
+          rule_id: Идентификатор правила
           "Line:Column": Строка и символ
         create:
-          Wait for the previous check to complete: Дождитесь завершения предыдущей проверки
-          Check created: Проверка запущена
+          wait_for_the_previous_check_to_complete: Дождитесь завершения предыдущей проверки
+          check_created: Проверка запущена

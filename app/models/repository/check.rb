@@ -4,6 +4,13 @@ class Repository
   class Check < ApplicationRecord
     belongs_to :repository, class_name: 'Repository', inverse_of: :checks
 
+    # validates :aasm_state, presence: true
+    # validates :check_date, presence: true
+    # validates :passed, presence: true
+    # validates :number_of_violations, presence: true
+    # validates :commit_id, presence: true
+    # validates :check_results, presence: true
+
     include AASM
 
     aasm do
@@ -48,6 +55,10 @@ class Repository
       event :mark_as_failed do
         transitions to: :failed
       end
+    end
+
+    def pending?
+      !finished? && !failed?
     end
   end
 end

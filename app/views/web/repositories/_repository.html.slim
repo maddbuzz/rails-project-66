@@ -8,9 +8,9 @@ tr
   td
     - if last_check.nil?
       = t('.no_checks_yet')
-    - elsif last_check.finished? || last_check.failed?
-      = last_check.passed
-    - else
+    - elsif last_check.pending?
       = t('.verification_not_completed_yet')
+    - else
+      = last_check.passed
   td
     = last_check&.number_of_violations

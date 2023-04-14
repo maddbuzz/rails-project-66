@@ -25,7 +25,7 @@ class UserSystemTest < ApplicationSystemTestCase
     assert_difference('Repository.count', +1) do
       select full_name, from: 'repository[github_id]'
       click_on t('web.repositories.new.submit')
-      assert_text t('web.repositories.create.Repository has been added')
+      assert_text t('web.repositories.create.repository_has_been_added')
     end
   end
 end

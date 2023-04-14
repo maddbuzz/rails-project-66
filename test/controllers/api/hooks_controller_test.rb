@@ -18,10 +18,10 @@ module Api
         assert_response :ok
       end
 
-      # assert_no_difference('Repository::Check.count') do
-      #   post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'push' }
-      #   assert_response :conflict
-      # end
+      assert_no_difference('Repository::Check.count') do
+        post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'push' }
+        assert_response :conflict
+      end
 
       assert_no_difference('Repository::Check.count') do
         post api_checks_url, params: { repository: { id: 1000 } }, headers: { 'X-GitHub-Event': 'push' }
