@@ -11,8 +11,6 @@ class CheckRepositoryJob < ApplicationJob
     @temp_repo_path = "#{TEMP_GIT_CLONES_PATH}/#{repository.name}/"
     @language_class = LintersAndParsers.const_get(repository.language.upcase_first)
 
-    check.check_date = Time.current
-
     perform_fetch
 
     json_string = perform_check

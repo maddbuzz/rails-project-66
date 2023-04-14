@@ -13,7 +13,7 @@ module Web
 
       def create
         last_check = @repository.checks.last
-        redirect_to @repository, alert: t('.wait_for_the_previous_check_to_complete') and return if last_check&.pending?
+        return redirect_to @repository, alert: t('.wait_for_the_previous_check_to_complete') if last_check&.pending?
 
         @check = @repository.checks.new
         authorize @check

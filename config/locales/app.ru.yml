@@ -71,13 +71,13 @@ ru:
         check_status: Статус проверки
         commit_id: ID коммита
         check_passed?: Проверка пройдена?
-        check_date: Дата проверки
+        checked_at: Дата и время проверки
 
       checks:
         show:
           go_to_repository: Перейти к репозиторию
           "Check #": "Проверка #%{count}"
-          date_of_creation: Дата создания
+          checked_at: Дата и время проверки
           Status: Статус
           check_passed?: Проверка пройдена?
           number_of_violations: Количество замечаний

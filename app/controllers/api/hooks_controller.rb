@@ -19,10 +19,10 @@ module Api
 
     def accept_push(github_id)
       repository = Repository.find_by(github_id:)
-      render json: { '404': 'Not found' }, status: :not_found and return if repository.nil?
+      return render json: { '404': 'Not found' }, status: :not_found if repository.nil?
 
       last_check = repository.checks.last
-      render json: { '409': 'Conflict' }, status: :conflict and return if last_check&.pending?
+      return render json: { '409': 'Conflict' }, status: :conflict if last_check&.pending?
 
       check = repository.checks.new
       check.save!
