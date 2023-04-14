@@ -9,7 +9,7 @@ table.table
       td
         = t('.checked_at')
       td
-        = @check.updated_at
+        = l(@check.updated_at.localtime)
     tr
       td
         = t('.Status')

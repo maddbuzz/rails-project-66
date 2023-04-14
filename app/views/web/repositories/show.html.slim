@@ -18,11 +18,11 @@ p
 p
   strong.me-2
     = t('.date_of_creation')
-  = repo_created_at && l(repo_created_at)
+  = repo_created_at && l(repo_created_at.localtime)
 p
   strong.me-2
     = t('.update_date')
-  = repo_updated_at && l(repo_updated_at)
+  = repo_updated_at && l(repo_updated_at.localtime)
 hr
 table.table.table-striped
   thead
