@@ -24,8 +24,7 @@ ru:
         log_out: Выйти
         log_in: Войти
       footer:
-        created_by: Проект
-        hexlet_student: 'студента "Хекслета"'
+        html: <span class="text-muted">Проект </span><a class="text-decoration-none" href="https://ru.hexlet.io/u/andrey_a">ученика школы "Хекслет"</a>
 
   web:
 
