@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 COMMIT_ID = '5702e5b'
-ESLINTER_JSON_PATH = 'test/fixtures/files/eslinter good.json'
+ESLINTER_JSON_PATH = 'test/fixtures/files/eslinter_good.json'
 RUBOCOP_JSON_PATH = 'test/fixtures/files/rubocop.json'
 LINTERS_RESULT_MAP = { 'Javascript' => ESLINTER_JSON_PATH, 'Ruby' => RUBOCOP_JSON_PATH }.freeze
 

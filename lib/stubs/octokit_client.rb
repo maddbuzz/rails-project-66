@@ -12,11 +12,14 @@ module Stubs
     end
 
     def repo(github_id)
-      # repos.find { |repo| repo[:id] == github_id }
       repos_from_file = repos
+
+      repo = repos_from_file.find { |r| r[:id] == github_id }
+      return repo if repo.present?
+
       size = repos_from_file.size
       i = (github_id % size)
-      repo = repos[i]
+      repo = repos_from_file[i]
       repo[:id] = github_id
       repo
     end
