@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+GITHUB_API_PATH = 'https://api.github.com'
 TEMP_GIT_CLONES_PATH = 'tmp/git_clones'
 
 class CheckRepositoryJob < ApplicationJob
@@ -63,7 +64,7 @@ def fetch_repo_data(repository, temp_repo_path)
   _, exit_status = run_programm "git clone #{repository.link}.git #{temp_repo_path}"
   raise StandardError unless exit_status.zero?
 
-  last_commit = HTTParty.get("https://api.github.com/repos/#{repository.full_name}/commits").first
+  last_commit = HTTParty.get("#{GITHUB_API_PATH}/repos/#{repository.full_name}/commits").first
   last_commit['sha'][...7]
 end
 

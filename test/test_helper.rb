@@ -35,7 +35,7 @@ def assert_flash(i18n_path, type = :notice)
   assert_equal t(i18n_path), flash[type]
 end
 
-# Теперь OmniAuth в тестах не обращается к внешним источникам
+# Теперь OmniAuth в тестах не обращается к внешним источникам:
 OmniAuth.config.test_mode = true
 
 def mock_omni_auth(user, provider = :github)

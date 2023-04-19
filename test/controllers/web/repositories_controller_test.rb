@@ -2,9 +2,6 @@
 
 require 'test_helper'
 
-# GITHUB_API_PATH = 'https://api.github.com/'
-REPOS_JSON_FILE_NAME = 'github_repos.json'
-
 module Web
   class RepositoriesControllerTest < ActionDispatch::IntegrationTest
     setup do
