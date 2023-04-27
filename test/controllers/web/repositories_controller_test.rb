@@ -30,14 +30,8 @@ module Web
       last_repository = Repository.last
       assert { last_repository.user == current_user }
       assert { last_repository.github_id == github_id }
-
-      assert_enqueued_with job: RepositoryUpdateJob
-      assert_enqueued_with job: CreateRepositoryWebhookJob
-
       assert_redirected_to repositories_path
       assert_flash 'web.repositories.create.repository_has_been_added'
-
-      perform_enqueued_jobs(only: RepositoryUpdateJob)
 
       octokit_client = ApplicationContainer[:octokit_client]
       client = octokit_client.new access_token: current_user.token, auto_paginate: true

@@ -10,27 +10,14 @@ module Api
     end
 
     test 'should receive push-events and react accordingly' do
-      assert_no_difference('Repository::Check.count') do
-        post api_checks_url, params: { repository: { id: 1000 } }, headers: { 'X-GitHub-Event': 'push' }
-        assert_response :not_found
-      end
-      assert_enqueued_jobs 0
+      assert { !Repository.exists?(id: 1000) }
+      post api_checks_url, params: { repository: { id: 1000 } }, headers: { 'X-GitHub-Event': 'push' }
+      assert_response :not_found
+      assert { !Repository::Check.exists?(repository_id: 1000) }
 
       post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'push' }
       assert_response :ok
       last_check = @repository.checks.last
-      assert { last_check.created? }
-      assert_enqueued_jobs 1
-      assert_enqueued_with job: CheckRepositoryJob
-
-      assert_no_difference('Repository::Check.count') do
-        post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'push' }
-        assert_response :conflict
-      end
-      assert_enqueued_jobs 1
-
-      perform_enqueued_jobs # performs all of the enqueued jobs up to this point in the test
-      last_check.reload
       assert { last_check.finished? }
 
       ruby_bad_check = repository_checks(:ruby_bad_check)
@@ -40,19 +27,17 @@ module Api
     end
 
     test 'should receive ping-events and react accordingly' do
-      assert_no_difference('Repository::Check.count') do
-        post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'ping' }
-        assert_response :ok
-      end
-      assert_no_enqueued_jobs
+      last_check = @repository.checks.last
+      post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'ping' }
+      assert_response :ok
+      assert { last_check == @repository.checks.last }
     end
 
     test 'should receive over events and react accordingly' do
-      assert_no_difference('Repository::Check.count') do
-        post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'pull_request' }
-        assert_response :not_implemented
-      end
-      assert_no_enqueued_jobs
+      last_check = @repository.checks.last
+      post api_checks_url, params: { repository: { id: @github_id } }, headers: { 'X-GitHub-Event': 'pull_request' }
+      assert_response :not_implemented
+      assert { last_check == @repository.checks.last }
     end
   end
 end

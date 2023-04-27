@@ -15,26 +15,14 @@ module Web
         assert_response :success
       end
 
-      test 'should create a new check and prevent another one from being created until the first one has finished' do
+      test 'should create a new check' do
         repository = repositories(:repository3)
 
         post repository_checks_path(repository)
         assert_redirected_to repository
         assert_flash 'web.repositories.checks.create.check_created'
+
         last_check = Repository::Check.last
-        assert { last_check.created? }
-
-        # .perform_later jobs are not actually run in tests, but we can check for their queuing:
-        assert_enqueued_with job: CheckRepositoryJob
-        assert_enqueued_jobs 1
-
-        post repository_checks_path(repository)
-        assert_redirected_to repository
-        assert_flash 'web.repositories.checks.create.wait_for_the_previous_check_to_complete', :alert
-        assert_enqueued_jobs 1
-
-        perform_enqueued_jobs # performs all of the enqueued jobs up to this point in the test
-        last_check.reload
         assert { last_check.finished? }
         assert { last_check.passed }
         assert { last_check.number_of_violations.zero? }

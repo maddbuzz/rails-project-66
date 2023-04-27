@@ -10,6 +10,12 @@ require 'webmock/minitest'
 
 module ActiveSupport
   class TestCase
+    # Make jobs run synchronously:
+    setup do
+      queue_adapter.perform_enqueued_jobs = true
+      queue_adapter.perform_enqueued_at_jobs = true
+    end
+
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
 
