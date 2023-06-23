@@ -1,13 +1,8 @@
 - lines = t('.lines_array')
 
 .mb-4
-  h1
-.display-4.fw-bold.mb-0
-  = lines[0]
-p.mb-4
-  = lines[1]
 h2.fw-bold
-  = lines[2]
+  = lines[0]
 p
-  = lines[3]
-= link_to lines[4], 'https://ru.hexlet.io/programs/rails/projects/66', class: 'btn btn-primary btn-lg px-4 mt-3 fw-bold'
+  = lines[1]
+= link_to lines[2], 'https://ru.hexlet.io/programs/rails/projects/66', target: :_blank, rel: 'noopener', class: 'btn btn-primary btn-lg px-4 mt-3 fw-bold'

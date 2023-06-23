@@ -24,7 +24,7 @@ ru:
         log_out: Выйти
         log_in: Войти
       footer:
-        html: <span class="text-muted">Проект </span><a class="text-decoration-none" href="https://ru.hexlet.io/u/andrey_a">студента "Хекслета"</a>
+        html: <span class="text-muted">Проект </span><a target="_blank" rel="noopener" class="text-decoration-none" href="https://ru.hexlet.io/u/andrey_a">студента "Хекслета"</a>
 
   web:
 
@@ -37,11 +37,9 @@ ru:
     home:
       index:
         lines_array:
-        - Привет от Хекслета!
-        - Практические курсы по программированию
         - Анализатор качества репозиториев
         - Проект, который помогает автоматически следить за качеством репозиториев на Github. Он отслеживает изменения и прогоняет их через встроенные анализаторы. Затем формирует отчеты и отправляет их пользователю.
-        - Узнать больше
+        - Узнать больше на Хекслете
 
     repositories:
       repository:
